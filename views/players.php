@@ -60,8 +60,8 @@
 						<div class="col-lg-4" style="top:3px;float:right;">
 							<form style="float:right;" method='post' action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name='searchPlayer'>
 								<input id='searchText' type='text' name='searchText'>
+                                <input class='btn btn-sm btn-primary'  type='submit'  name='edit' value='Search Name'>
                                 <input class='btn btn-sm btn-primary'  type='submit'  name='pid' value='Search PID'>
-								<input class='btn btn-sm btn-primary'  type='submit'  name='edit' value='Search Name'>
 							</form>
 						</div>
                         <ol class="breadcrumb">

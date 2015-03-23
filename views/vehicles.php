@@ -60,8 +60,8 @@
 						<div class="col-lg-4" style="top:3px;float:right;">
 							<form style="float:right;" method='post' action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name='searchPlayer'>
 								<input id='searchText' type='text' name='searchText'>
-								<input class='btn btn-sm btn-primary'  type='submit'  name='pid' value='Search PID'>
 								<input class='btn btn-sm btn-primary'  type='submit'  name='class' value='Search Class'>
+                                <input class='btn btn-sm btn-primary'  type='submit'  name='pid' value='Search PID'>
 							</form>
 						</div>
                         <ol class="breadcrumb">
@@ -131,11 +131,11 @@
 
                                                             if (isset($_POST['pid'])) 
                                                             {
-                                                                $sql = "SELECT * FROM `vehicles` WHERE `classname` LIKE '%".$searchText."%' ".$max." ;";
+                                                                $sql = "SELECT * FROM `vehicles` WHERE `pid` LIKE '%".$searchText."%' ".$max." ;";
                                                             } 
                                                             else 
                                                             {
-                                                                $sql = "SELECT * FROM `vehicles` WHERE `pid` LIKE '%".$searchText."%' ".$max." ;";
+                                                                $sql = "SELECT * FROM `vehicles` WHERE `classname` LIKE '%".$searchText."%' ".$max." ;";
                                                             }												
                                                         }
                                                         else
