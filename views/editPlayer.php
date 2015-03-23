@@ -33,9 +33,11 @@
     $result_of_query = $db_connection->query($sql);
     while($row = mysqli_fetch_assoc($result_of_query)) 
     {
-        $uniqueID = $row["uid"];
+        $uniqueId = $row["uid"];
     };
-	
+
+    $uId = print($uniqueId);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -399,11 +401,12 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $sql = 'SELECT * FROM `messages` WHERE `uid` = "'.$uniqueID.'";';
+                                            $sql = 'SELECT * FROM `messages` WHERE `26681` = "'.$uId.'" ORDER BY `time` DESC';
                                             $result_of_query = $db_connection->query($sql);
                                             while($row = mysqli_fetch_assoc($result_of_query)) 
                                             {
                                                 echo "<tr>";
+                                                echo "<td>".$row["uid"]."</td>";
                                                 echo "<td>".$row["fromName"]."</td>";
                                                 echo "<td>".$row["toName"]."</td>";
                                                 echo "<td>".$row["time"]."</td>";
