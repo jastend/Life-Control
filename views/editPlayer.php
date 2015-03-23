@@ -29,6 +29,12 @@
 	$return = md5('BE' . $temp);
 	$pGID = $return;
 
+    $sql = 'SELECT `uid` FROM `players` WHERE `playerid` = "'.$pId.'";';
+    $result_of_query = $db_connection->query($sql);
+    while($row = mysqli_fetch_assoc($result_of_query)) 
+    {
+        $uniqueID = $row["uid"];
+    };
 	
 ?>
 <!DOCTYPE html>
@@ -232,7 +238,7 @@
 													echo "<center>";
 														echo "<h3>Name: ".$row["name"]."</h3>";
 														echo "<h4>Aliases: ".$row["aliases"]."</h4>";
-                                                        echo "<h4>Datenbank ID: ".$row["uid"]."</h4>";
+                                                        echo "<h4>Database ID: ".$row["uid"]."</h4>";
 														echo "<h4>Player ID: ".$playersID."</h4>";
 														echo "<h4>GUID: ".$pGID."</h4>";
 														echo "<h4>Cash:    <input id='player_cash' name='player_cash' type='text' value='".$row["cash"]."'></td><br/>";
@@ -374,6 +380,40 @@
 										echo "<h4>THW Gear:</h4> <textarea id='med_gear' name='med_gear' cols='70' rows='5'>".$row["med_gear"]."</textarea>";
 									?>
 								</div>
+							</div>
+						</div>
+                        <div class='panel panel-default'>
+							<div class='panel-heading'>
+								<h3 class='panel-title'><i class='fa fa-envelope-o fa-fw'></i> Messages</h3>
+							</div>
+							<div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th>Time</th>
+                                                <th>Message</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $sql = "SELECT * FROM `messages` WHERE `uid` = '.$uniqueID.' ORDER BY `time` DESC";
+                                            $result_of_query = $db_connection->query($sql);
+                                            while($row = mysqli_fetch_assoc($result_of_query)) 
+                                            {
+                                                echo "<tr>";
+                                                echo "<td>".$row["fromName"]."</td>";
+                                                echo "<td>".$row["toName"]."</td>";
+                                                echo "<td>".$row["time"]."</td>";
+                                                echo "<td>".$row["message"]."</td>";
+                                                echo "</tr>";
+                                            };
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
 							</div>
 						</div>
 					</div>
