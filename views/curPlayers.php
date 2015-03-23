@@ -112,6 +112,7 @@
 										<thead>
 											<tr>
 												<th>Player Name</th>
+                                                <th>Score</th>
 												<th>Time Played</th>
 												<!-- <th>Kick</th>
 												<th>Ban</th> -->
@@ -122,6 +123,7 @@
 											<?php foreach( $Players as $Player ): ?>
 												<tr>
 													<td><?php echo htmlspecialchars( $Player[ 'Name' ] ); ?></td>
+                                                    <td><?php echo $Player[ 'Frags' ]; ?></td>
 													<td><?php echo $Player[ 'TimeF' ]; ?></td>
 												</tr>
 											<?php endforeach; ?>
