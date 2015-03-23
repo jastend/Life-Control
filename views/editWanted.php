@@ -2,21 +2,19 @@
 	// create a database connection, using the constants from config/db.php (which we loaded in index.php)
 	$db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-	$uId = "";
-	
-	if (isset($_POST["userId"]))
+	if (isset($_POST["wantedID"]))
 	{
-		$uId = $_POST["userId"];
+		$wantedID = $_POST["wantedID"];
 	}
 	else
 	{
-		echo "<center><h1 style='color:red'>USERID NOT SET</h1></center>";
+		echo "<center><h1 style='color:red'>wantedID NOT SET</h1></center>";
 	}
 
 	// change character set to utf8 and check it
 	if (!$db_connection->set_charset("utf8")) {
 		$db_connection->errors[] = $db_connection->error;
-	}	
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,11 +64,11 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Staff <small>Editor
+                            Wanted <small>Editing</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-wrench"></i> Staff Editor
+                                <i class="fa fa-wrench"></i> Wanted
                             </li>
                         </ol>
                     </div>
@@ -80,38 +78,62 @@
                     <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-users fa-fw"></i> Staff Member</h3>
+                                <h3 class="panel-title"><i class="fa fa-child fa-fw"></i> Vehicle</h3>
                             </div>
                             <div class="panel-body">
-								<form method="post" action="editStaffAction.php" name="editform">
+								<form method="post" action="edit-actionW.php" name="editform">
 									<?php
 										if (!$db_connection->connect_errno) 
 										{
-											$sql = 'SELECT * FROM `users` WHERE `user_id` ="'.$uId.'";';
+											$sql = 'SELECT * FROM `wanted` WHERE `wantedID` ="'.$wantedID.'";';
 											$result_of_query = $db_connection->query($sql);
 											if ($result_of_query->num_rows > 0)
 											{
 												while($row = mysqli_fetch_assoc($result_of_query)) 
 												{
-													$playersID = $row["playerid"];
 													echo "<center>";
-														echo "<h4>Name:  <input id='staffName' name='staffName' type='text' value='".$row["user_name"]."'></h4>";
-														echo "<h4>Email: <input id='staffEmail' style='min-width:300px;'name='staffEmail' type='text' value='".$row["user_email"]."'></h4>";
-														echo "<h4>Rank: ";
-														echo "<select id='staffRank' name='staffRank'>";
+														echo "<h4>Wanted ID: <input id='wantedID' name='wantedID' type='text' value='".$row["wantedID"]."'></td><br/>";
+														echo "<h4>Name:   <input id='wantedName' name='wantedName' type='text' value='".$row["wantedName"]."'></td><br/>";
+														echo "<h4>Bounty:    <input id='wantedBounty' name='wantedBounty' type='text' value='".$row["wantedBounty"]."'></td><br/>";
+														echo "<h4>Active:";
+														echo "<select id='active' name='active'>";
+															echo '<option value="0"';
+																if($row['active']==0){echo ' selected';}
+															echo '>0</option>';	
 															echo '<option value="1"';
-																if($row['user_level']==1){echo ' selected';}
-															echo '>User</option>';	
-															echo '<option value="2"';
-																if($row['user_level']==2){echo ' selected';}
-															echo '>Super-User</option>';
-															echo '<option value="3"';
-																if($row['user_level']==3){echo ' selected';}
-															echo '>Administrator</option>';
-														echo "</select></h4>";
-														echo "<h4>Player ID:  <input id='staffPID' name='staffPID' type='text' value='".$row["playerid"]."'></h4>";
+																if($row['active']==1){echo ' selected';}
+															echo '>1</option>';	
+														echo "</select>";
 													echo "</center>";
-										
+									?>
+							</div>		
+						</div>
+					</div>
+						<div class='col-lg-12'>
+							<div class='panel panel-default'>
+								<div class='panel-heading'>
+									<h3 class='panel-title'><i class='fa fa-suitcase  fa-fw'></i> Crimes</h3>
+								</div>
+								<div class="panel-body">
+									<div class="col-md-4" style="padding-left:425px;">
+										<?php
+											echo "<textarea id='wantedCrimes' name='wantedCrimes' cols='100' rows='5'>".$row["wantedCrimes"]."</textarea>";
+										?>
+									</div>
+								</div>
+							</div>
+						</div>
+					<div class="col-md-4"></div>					
+					<div class="col-md-4">
+								<center>
+									<?php
+										echo "<input class='btn btn-lg btn-primary'  type='submit'  name='update' value='Submit Changes'>  ";
+										echo "<input class='btn btn-lg btn-danger'  type='submit'  name='drop' value='DELETE'>";
+									?>
+									<br/>
+								</center>
+					</div>
+									<?php
 												};
 											}
 											else 
@@ -124,15 +146,8 @@
 										{
 											$this->errors[] = "Database connection problem.";
 										}
-											echo "<input id='user_id' type='hidden' name='user_id' value='".$uId."'>";
-											echo "<center><input class='btn btn-lg btn-primary'  type='submit'  name='edit' value='Submit Changes'></center>";
-								
-									?>
+									?>  
 								</form>
-							</div>		
-						</div>
-					</div>
-								
             </div>
             <!-- /.container-fluid -->
         </div>

@@ -88,70 +88,67 @@
                     </div>
                 </div>
                 <!-- /.row -->
+                 <?php
+                    if($_SESSION['user_level'] >= '2') { ?>
 					<div class="col-lg-4">
                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-home fa-fw"></i>Houses Quick Look</h3>
                             </div>
                             <div class="panel-body">
-                                <?php
-                                    if($_SESSION['user_level'] >= '2') { ?>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered table-hover table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <?php if($_SESSION['user_level'] >= '3') { ?>
-                                                        <th>Position</th>
-                                                        <?php }; ?>
-                                                        <th>Edit</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                        if (!$db_connection->connect_errno) 
-                                                        {
-                                                            $sql = "SELECT `pos`,`id` FROM `houses` WHERE `pid` = '".$pId."' ORDER BY `id` DESC LIMIT 10";
-                                                            $result_of_query = $db_connection->query($sql);
-                                                            while($row = mysqli_fetch_assoc($result_of_query)) 
-                                                            {
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <?php if($_SESSION['user_level'] >= '3') { ?>
+                                                <th>Position</th>
+                                                <?php }; ?>
+                                                <th>Edit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                                if (!$db_connection->connect_errno) 
+                                                {
+                                                    $sql = "SELECT `pos`,`id` FROM `houses` WHERE `pid` = '".$pId."' ORDER BY `id` DESC LIMIT 10";
+                                                    $result_of_query = $db_connection->query($sql);
+                                                    while($row = mysqli_fetch_assoc($result_of_query)) 
+                                                    {
 
-                                                                $temp = '';
+                                                        $temp = '';
 
-                                                                for ($i = 0; $i < 8; $i++) {
-                                                                    $temp .= chr($playersID & 0xFF);
-                                                                    $playersID >>= 8;
-                                                                }
-
-                                                                $return = md5('BE' . $temp);
-                                                                $pGID = $return;
-
-                                                                $hID = $row["id"];
-                                                                echo "<tr>";
-                                                                    if($_SESSION['user_level'] >= '3') {
-                                                                        echo "<td>".$row["pos"]."</td>";
-                                                                    };
-                                                                    echo "<td><form method='post' action='editHouse.php' name='PlayerEdit'>";
-                                                                    echo "<input id='hID' type='hidden' name='hID' value='".$hID."'>";
-                                                                    echo "<input class='btn btn-sm btn-primary'  type='submit'  name='editH' value='Edit House'>";
-                                                                    echo "</form></td>";
-                                                                echo "</tr>";
-                                                            };
-                                                        } 
-                                                        else 
-                                                        {
-                                                            $this->errors[] = "Database connection problem.";
+                                                        for ($i = 0; $i < 8; $i++) {
+                                                            $temp .= chr($playersID & 0xFF);
+                                                            $playersID >>= 8;
                                                         }
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    <?php } else {
-                                           echo "Your permission level is insufficient to see this.";
-                                    };
-                                ?>
+
+                                                        $return = md5('BE' . $temp);
+                                                        $pGID = $return;
+
+                                                        $hID = $row["id"];
+                                                        echo "<tr>";
+                                                            if($_SESSION['user_level'] >= '3') {
+                                                                echo "<td>".$row["pos"]."</td>";
+                                                            };
+                                                            echo "<td><form method='post' action='editHouse.php' name='PlayerEdit'>";
+                                                            echo "<input id='hID' type='hidden' name='hID' value='".$hID."'>";
+                                                            echo "<input class='btn btn-sm btn-primary'  type='submit'  name='editH' value='Edit House'>";
+                                                            echo "</form></td>";
+                                                        echo "</tr>";
+                                                    };
+                                                } 
+                                                else 
+                                                {
+                                                    $this->errors[] = "Database connection problem.";
+                                                }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <?php }; ?>
 					<div class="col-lg-4" style="float:right;">
                         <div class="panel panel-default">
                             <div class="panel-heading">

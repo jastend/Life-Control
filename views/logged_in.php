@@ -122,26 +122,34 @@
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 					<i class="fa fa-info-circle"></i> <strong>Welcome</strong> To Life Control <?php echo $_SESSION['user_name']; ?>.
 				</div>
-			<?php if (enable_game_query == TRUE) { ?>
-				<div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-									<center><div id="bigfella" style="width:200px; height:120px"></div></center>
-                                </div>
-                            </div>
-                            <a href="curPlayers.php">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View All Players</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-				</div>	
-			<?php }?>
+			    <?php 
+					if ($_SESSION['user_level'] >= 1)
+					{
+						if (enable_game_query == TRUE) 
+						{ 
+                ?>
+							<div class="row">
+								<div class="col-lg-3 col-md-6">
+									<div class="panel panel-primary">
+										<div class="panel-heading">
+											<div class="row">
+												<center><div id="bigfella" style="width:200px; height:120px"></div></center>
+											</div>
+										</div>
+										<a href="curPlayers.php">
+											<div class="panel-footer">
+												<span class="pull-left">View All Players</span>
+												<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+												<div class="clearfix"></div>
+											</div>
+										</a>
+									</div>
+								</div>
+                        </div>	
+                <?php 	
+                        }
+                    }
+                ?>
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="panel panel-default">

@@ -1,9 +1,7 @@
 <?php
 	// create a database connection, using the constants from config/db.php (which we loaded in index.php)
 	$db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
 	$page_rows = results_per_page;
-	
 	// change character set to utf8 and check it
 	if (!$db_connection->set_charset("utf8")) {
 		$db_connection->errors[] = $db_connection->error;
@@ -57,17 +55,17 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Staff <small>Overview</small>
+                            Wanted List <small>Overview</small>
                         </h1>
 						<div class="col-lg-4" style="top:3px;float:right;">
 							<form style="float:right;" method='post' action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name='searchPlayer'>
 								<input id='searchText' type='text' name='searchText'>
-								<input class='btn btn-sm btn-primary'  type='submit'  name='edit' value='Search'>
+								<input class='btn btn-sm btn-primary'  type='submit'  name='class' value='Search Bounty'>
 							</form>
 						</div>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-users"></i> Staff
+                                <i class="fa fa-list-ul"></i> Wanted List
                             </li>
                         </ol>
                     </div>
@@ -77,17 +75,18 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-users fa-fw"></i> Staff
+                                <h3 class="panel-title"><i class="fa fa-car fa-fw"></i> Wanted List
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Staff Name</th>
-                                                <th>Email Address</th>
-                                                <th>Rank</th>
-												<th>Player ID</th>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Crimes</th>
+												<th>Bounty</th>
+                                                <th>Active</th>
 												<th>Edit</th>
                                             </tr>
                                         </thead>
@@ -95,6 +94,7 @@
 										<?php
 											if (!$db_connection->connect_errno) 
 											{
+
 												if (!(isset($_POST['pagenum']))) 
 												{ 
 													$pagenum = 1; 
@@ -104,7 +104,7 @@
 													$pagenum = $_POST['pagenum'];
 												}
 
-												$sql = "SELECT * FROM `users`;";
+												$sql = "SELECT * FROM `wanted`;";
 
 												$result_of_query = $db_connection->query($sql);
 												$rows = mysqli_num_rows($result_of_query); 
@@ -121,29 +121,29 @@
 												} 
 												
 												$max = 'limit ' .($pagenum - 1) * $page_rows .',' .$page_rows;
-
+																					
 												if (isset($_POST['searchText']))
 												{
 													$searchText = $_POST['searchText'];
-													$sql = "SELECT * FROM `users` WHERE `user_name` LIKE '%".$searchText."%' ".$max." ;";												
+													$sql = "SELECT * FROM `wanted` WHERE `wantedBounty` LIKE '%".$searchText."%' ".$max." ;";											
 												}
 												else
 												{
-													$sql = "SELECT * FROM `users` ".$max.";";
+													$sql = "SELECT * FROM `wanted` ".$max." ;";
 												}
-												
 												$result_of_query = $db_connection->query($sql);
 												while($row = mysqli_fetch_assoc($result_of_query)) 
 												{
-													$userID = $row["user_id"];
+													$wantedID = $row["wantedID"];
 													echo "<tr>";
-														echo "<td>".$row["user_name"]."</td>";
-														echo "<td>".$row["user_email"]."</td>";
-														echo "<td>".$row["user_level"]."</td>";
-														echo "<td>".$row["playerid"]."</td>";
-														echo "<td><form method='post' action='editStaff.php' name='PlayerEdit'>";
-														echo "<input id='userId' type='hidden' name='userId' value='".$userID."'>";
-														echo "<input class='btn btn-sm btn-primary'  type='submit'  name='edit' value='Edit Staff Member'>";
+														echo "<td>".$row["wantedID"]."</td>";
+														echo "<td>".$row["wantedName"]."</td>";
+														echo "<td>".$row["wantedCrimes"]."</td>";
+														echo "<td>".$row["wantedBounty"]."</td>";
+														echo "<td>".$row["active"]."</td>";
+														echo "<td><form method='post' action='editWanted.php' name='PlayerEdit'>";
+														echo "<input id='wantedID' type='hidden' name='wantedID' value='".$wantedID."'>";
+														echo "<input class='btn btn-sm btn-primary'  type='submit'  name='edit' value='Edit Wanted'>";
 														echo "</form></td>";
 													echo "</tr>";
 												};
@@ -179,8 +179,7 @@
 													echo "</form></th>";
 												} 
 												echo "</thead></table>";
-												
-											} 
+											}  
 											else 
 											{
 												$this->errors[] = "Database connection problem.";
