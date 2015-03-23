@@ -399,7 +399,7 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $sql = "SELECT * FROM `messages` WHERE `uid` = '.$uniqueID.' ORDER BY `time` DESC";
+                                            $sql = 'SELECT * FROM `messages` WHERE `uid` = "'.$uniqueID.'";';
                                             $result_of_query = $db_connection->query($sql);
                                             while($row = mysqli_fetch_assoc($result_of_query)) 
                                             {
