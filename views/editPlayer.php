@@ -232,6 +232,7 @@
 													echo "<center>";
 														echo "<h3>Name: ".$row["name"]."</h3>";
 														echo "<h4>Aliases: ".$row["aliases"]."</h4>";
+                                                        echo "<h4>Datenbank ID: ".$row["uid"]."</h4>";
 														echo "<h4>Player ID: ".$playersID."</h4>";
 														echo "<h4>GUID: ".$pGID."</h4>";
 														echo "<h4>Cash:    <input id='player_cash' name='player_cash' type='text' value='".$row["cash"]."'></td><br/>";
