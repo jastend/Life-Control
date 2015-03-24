@@ -169,7 +169,7 @@
 											<?php
 												if (!$db_connection->connect_errno) 
 												{
-													$sql = "SELECT * FROM `vehicles` WHERE `pid` = '".$pId."' ORDER BY `id` DESC LIMIT 10";
+													$sql = "SELECT * FROM `vehicles` WHERE `pid` = '".$pId."' ORDER BY `id` DESC";
 													$result_of_query = $db_connection->query($sql);
 													while($row = mysqli_fetch_assoc($result_of_query)) 
 													{
