@@ -460,6 +460,7 @@
                                                                 <?php echo "<tr><td>cannabis</td><td><input id='skills_cannabis' name='skills_cannabis' value='".$row["cannabis"]."'></textarea></td></tr>"; ?>
                                                                 <?php echo "<tr><td>cocaine</td><td><input id='skills_cocaine' name='skills_cocaine' value='".$row["cocaine"]."'></textarea></td></tr>"; ?>
                                                                 <?php echo "<tr><td>heroinu</td><td><input id='skills_heroinu' name='skills_heroinu' value='".$row["heroinu"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Bluemeth</td><td><input id='skills_diebstahl' name='skills_diebstahl' value='".$row["diebstahl"]."'></textarea></td></tr>"; ?>
                                                             </tbody>
                                                         </table>
                                                     </div>
