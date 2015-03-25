@@ -373,6 +373,110 @@
 							</div>
 						</div>
 					</div>
+                    <div class='col-lg-12'>
+                        <div class='panel panel-default'>
+                        <div class='panel-heading'>
+                            <h3 class='panel-title'><i class='fa fa-cubes fa-fw'></i> Skills</h3>
+                        </div>
+                        <?php
+                            if (!$db_connection->connect_errno) 
+                            {
+                                $sql = "SELECT * FROM `skillsys` WHERE `playerid` = '".$pId."' ;";
+                                $result_of_query = $db_connection->query($sql);
+                                while($row = mysqli_fetch_assoc($result_of_query)) 
+                                { ?>
+                                    <div class="panel-body">
+                                        <div class="col-lg-4" style="float:left;">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title"><i class="fa fa-car fa-fw"></i> General</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered table-hover table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Ability</th>
+                                                                    <th>Points</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php echo "<tr><td>Apple</td><td><input id='skills_apple' name='skills_apple' value='".$row["apple"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Cherry</td><td><input id='skills_peach' name='skills_peach' value='".$row["peach"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Salt</td><td><input id='skills_salt' name='skills_salt' value='".$row["salt"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Sand</td><td><input id='skills_sand' name='skills_sand' value='".$row["sand"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Rock</td><td><input id='skills_rock' name='skills_rock' value='".$row["rock"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Frog</td><td><input id='skills_frog' name='skills_frog' value='".$row["frog"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Oil</td><td><input id='skills_oilu' name='skills_oilu' value='".$row["oilu"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Uran</td><td><input id='skills_uranu' name='skills_uranu' value='".$row["uranu"]."'></textarea></td></tr>"; ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4" style="float:left;">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title"><i class="fa fa-car fa-fw"></i> Ores</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered table-hover table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Ability</th>
+                                                                    <th>Points</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php echo "<tr><td>Copperore</td><td><input id='skills_copperore' name='skills_copperore' value='".$row["copperore"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Coal</td><td><input id='skills_coal' name='skills_coal' value='".$row["coal"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Ironore</td><td><input id='skills_ironore' name='skills_ironore' value='".$row["ironore"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Silver</td><td><input id='skills_silver' name='skills_silver' value='".$row["silver"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Gold</td><td><input id='skills_gold' name='skills_gold' value='".$row["gold"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Diamond</td><td><input id='skills_diamond' name='skills_diamond' value='".$row["diamond"]."'></textarea></td></tr>"; ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4" style="float:left;">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title"><i class="fa fa-car fa-fw"></i> Drugs</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered table-hover table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Ability</th>
+                                                                    <th>Points</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php echo "<tr><td>cannabis</td><td><input id='skills_cannabis' name='skills_cannabis' value='".$row["cannabis"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>cocaine</td><td><input id='skills_cocaine' name='skills_cocaine' value='".$row["cocaine"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>heroinu</td><td><input id='skills_heroinu' name='skills_heroinu' value='".$row["heroinu"]."'></textarea></td></tr>"; ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php
+                                };
+                            } 
+                            else 
+                            {
+                                $this->errors[] = "Database connection problem.";
+                            }
+                        ?>
+                        </div>
+                    </div>
 					<div class="col-md-4"></div>					
 					<div class="col-md-4">
 								<center>
