@@ -53,10 +53,13 @@
                     <?php
                         if ($_SESSION['user_level'] >= 2) { ?>
                             <li>
-                                <a href="vehicles.php"><i class="fa fa-fw fa-car"></i> Vehicles</a>
+                                <a href="houses.php"><i class="fa fa-fw fa-home"></i> Houses</a>
                             </li>
                             <li>
-                                <a href="houses.php"><i class="fa fa-fw fa-home"></i> Houses</a>
+                                <a href="messages.php"><i class="fa fa-fw fa-envelope-o"></i> Messages</a>
+                            </li>
+                            <li>
+                                <a href="vehicles.php"><i class="fa fa-fw fa-car"></i> Vehicles</a>
                             </li>
                         <?php };
                     ?>
