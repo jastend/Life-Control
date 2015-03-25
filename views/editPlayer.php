@@ -389,7 +389,7 @@
                                         <div class="col-lg-4" style="float:left;">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title"><i class="fa fa-car fa-fw"></i> General</h3>
+                                                    <h3 class="panel-title"><i class="fa fa-apple fa-fw"></i> General</h3>
                                                 </div>
                                                 <div class="panel-body">
                                                     <div class="table-responsive">
@@ -418,7 +418,7 @@
                                         <div class="col-lg-4" style="float:left;">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title"><i class="fa fa-car fa-fw"></i> Ores</h3>
+                                                    <h3 class="panel-title"><i class="fa fa-diamond fa-fw"></i> Ores</h3>
                                                 </div>
                                                 <div class="panel-body">
                                                     <div class="table-responsive">
@@ -445,7 +445,7 @@
                                         <div class="col-lg-4" style="float:left;">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title"><i class="fa fa-car fa-fw"></i> Drugs</h3>
+                                                    <h3 class="panel-title"><i class="fa fa-medkit fa-fw"></i> Drugs</h3>
                                                 </div>
                                                 <div class="panel-body">
                                                     <div class="table-responsive">
