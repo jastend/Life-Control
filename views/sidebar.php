@@ -50,6 +50,12 @@
                     <li>
                         <a href="players.php"><i class="fa fa-fw fa-child "></i> Players</a>
                     </li>
+                    <li>
+                        <a href="prices.php"><i class="fa fa-fw fa-money"></i> Prices</a>
+                    </li>
+                    <li>
+                        <a href="gangs.php"><i class="fa fa-fw fa-sitemap"></i> Gangs</a>
+                    </li>
                     <?php
                         if ($_SESSION['user_level'] >= 2) { ?>
                             <li>
@@ -63,9 +69,6 @@
                             </li>
                         <?php };
                     ?>
-                   <li>
-                        <a href="gangs.php"><i class="fa fa-fw fa-sitemap"></i> Gangs</a>
-                    </li>
                     <?php
                     if (alits_life_4 == TRUE)
 					{
