@@ -124,11 +124,11 @@
                                                         if (isset($_POST['searchText']))
                                                         {
                                                             $searchText = $_POST['searchText'];
-                                                            $sql = "SELECT * FROM `messages` WHERE `message` LIKE '%".$searchText."%' ".$max." ;";
+                                                            $sql = "SELECT * FROM `messages` WHERE `message` LIKE '%".$searchText."%' ORDER BY `time` DESC ".$max." ;";
                                                         }
                                                         else
                                                         {
-                                                            $sql = "SELECT * FROM `messages` ".$max." ;";
+                                                            $sql = "SELECT * FROM `messages` ORDER BY `time` DESC ".$max." ;";
                                                         }
                                                         $result_of_query = $db_connection->query($sql);
                                                         while($row = mysqli_fetch_assoc($result_of_query)) 
