@@ -51,6 +51,8 @@
 	{
 		
 		$sql = "UPDATE `players` SET `cash`='".$pCash."',`bankacc`='".$pBank."',`coplevel`='".$pCopLvl."',`cop_licenses`='".$pcopLic."',`civ_licenses`='".$pcivLic."',`med_licenses`='".$pmedLic."',`cop_gear`='".$pcopG."',`med_gear`='".$pmedG."',`mediclevel`='".$pMedLvl."',`adminlevel`='".$pAdminLvl."',`donatorlvl`='".$pDonLvl."',`civ_gear`='".$pcivG."' WHERE `playerid` = '".$pId."'";
+        
+        $result_of_query = $db_connection->query($sql);
 
         $sql = "UPDATE `skillsys` SET
 `apple`='".$psApple."', `peach`='".$psPeach."', `salt`='".$psSalt."', `sand`='".$psSand."', `rock`='".$psRock."', `frog`='".$psFrog."', `oilu`='".$psOilu."', `uranu`='".$psUranu."', `copperore`='".$psCopperore."', `coal`='".$psCoal."', `ironore`='".$psIronore."', `silver`='".$psSilver."', `gold`='".$psGold."', `diamond`='".$psDiamond."', `cannabis`='".$psCannabis."', `cocaine`='".$psCocaine."', `heroinu`='".$psHeroinu."', `diebstahl`='".$psDiebstahl."' WHERE `playerid` = '".$pId."'";
