@@ -48,6 +48,9 @@
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
+                        <a href="newplayercheck.php"><i class="fa fa-fw fa-bullseye"></i> New Player Check</a>
+                    </li>
+                    <li>
                         <a href="players.php"><i class="fa fa-fw fa-child "></i> Players</a>
                     </li>
                     <li>
