@@ -64,5 +64,5 @@
 		$this->errors[] = "Database connection problem.";
 	}
 
-	header('Location: editPlayer.php?playerId='.$pId.'');
+	header('Location: editPlayer.php?pId='.$pId.'');
 ?>

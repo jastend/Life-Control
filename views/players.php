@@ -155,10 +155,7 @@
                                                                 echo "<td>".$row["coplevel"]."</td>";
                                                                 echo "<td>".$row["mediclevel"]."</td>";
                                                                 echo "<td>".$row["adminlevel"]."</td>";
-                                                                echo "<td><form method='post' action='editPlayer.php' name='PlayerEdit'>";
-                                                                echo "<input id='playerId' type='hidden' name='playerId' value='".$playersID."'>";
-                                                                echo "<input class='btn btn-sm btn-primary'  type='submit'  name='edit' value='Edit Player'>";
-                                                                echo "</form></td>";
+                                                                echo "<td><a href='/editPlayer.php?pId=".$playersID."'><div class='btn btn-sm btn-primary'>Edit Player</div></a></td>";
                                                             echo "</tr>";
 
                                                         };

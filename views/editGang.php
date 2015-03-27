@@ -2,7 +2,11 @@
 	// create a database connection, using the constants from config/db.php (which we loaded in index.php)
 	$db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-	if (isset($_POST["gID"]))
+	if (isset($_GET["gId"]))
+	{
+		$gID = $_GET["gId"];	
+	}
+    else if (isset($_POST["gID"]))
 	{
 		$gID = $_POST["gID"];
 	}

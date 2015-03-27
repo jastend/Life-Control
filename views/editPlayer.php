@@ -7,6 +7,11 @@
 		$pId = $_GET["playerId"];	
         $playersID = $_GET["playerId"];
 	}
+    if (isset($_GET["pId"]))
+	{
+		$pId = $_GET["pId"];	
+        $playersID = $_GET["pId"];
+	}
     else if (isset($_POST["playerId"]))
 	{
 		$pId = $_POST["playerId"];	
@@ -297,7 +302,7 @@
 														echo "<h4>Aliases: ".$row["aliases"]."</h4>";
                                                         echo "<h4>Database ID: ".$row["uid"]."</h4>";
 														echo "<h4>Player ID: ".$playersID."</h4>";
-														echo "<h4>GUID: ".$pGID."</h4>";
+														echo "<h4>GUID: ".$pGID."</h4>";                        
 														echo "<h4>Cash:    <input id='player_cash' name='player_cash' type='text' value='".$row["cash"]."'></td><br/>";
 														echo "<h4>Bank:    <input id='player_bank' name='player_bank' type='text' value='".$row["bankacc"]."'></td><br/>";
 														echo "<h4>Cop: ";
@@ -383,21 +388,35 @@
 														echo "</select>";
 													echo "</center>";
 									?>
+                                    <?php
+                                                    $sql = 'SELECT * FROM `gangs` where `members` LIKE "%'.$pId.'%"';
+                                                        $result_of_query = $db_connection->query($sql);
+                                                        while($row = mysqli_fetch_assoc($result_of_query)) 
+                                                        {
+                                                             echo "<center><h4>Gang: <a href='/editGang.php?gId=".$row["id"]."'>".$row["name"]."</a></h4></center>";                                                            
+                                                        };
+                                    ?>
 							</div>		
 						</div>
 					</div>
+                    <?php
+                    $sql = 'SELECT * FROM `players` WHERE `playerid` ="'.$pId.'";';
+                    $result_of_query = $db_connection->query($sql);
+                    while($row = mysqli_fetch_assoc($result_of_query)) 
+                    {    
+                    ?>
 					<div class='col-lg-12'>
 						<div class='panel panel-default'>
 							<div class='panel-heading'>
 								<h3 class='panel-title'><i class='fa fa-taxi fa-fw'></i> Police</h3>
 							</div>
 							<div class="panel-body">
-								<div class="col-md-4" style="padding-left:250px;">
+								<div class="col-md-6">
 									<?php
 										echo "<h4>Cop Licenses:</h4> <textarea id='cop_lic' name='cop_lic' cols='70' rows='5'>".$row["cop_licenses"]."</textarea>";
 									?>
 								</div>
-								<div class="col-md-4" style="padding-left:300px;">
+								<div class="col-md-6">
 									<?php
 										echo "<h4>Cop Gear:</h4> <textarea id='cop_gear' name='cop_gear' cols='70' rows='5'>".$row["cop_gear"]."</textarea>";
 									?>
@@ -409,12 +428,12 @@
 								<h3 class='panel-title'><i class='fa fa-child fa-fw'></i> Civilian</h3>
 							</div>
 							<div class="panel-body">
-								<div class="col-md-4" style="padding-left:250px;">
+								<div class="col-md-6">
 									<?php
 										echo "<h4>Civ Licenses:</h4> <textarea id='civ_lic' name='civ_lic' cols='70' rows='5'>".$row["civ_licenses"]."</textarea>";
 									?>
 								</div>
-								<div class="col-md-4" style="padding-left:300px;">
+								<div class="col-md-6">
 									<?php
 										echo "<h4>Civ Gear:</h4> <textarea id='civ_gear' name='civ_gear' cols='70' rows='5'>".$row["civ_gear"]."</textarea>";
 									?>
@@ -427,12 +446,12 @@
 								<h3 class='panel-title'><i class='fa fa-ambulance fa-fw'></i> THW</h3>
 							</div>
 							<div class="panel-body">
-								<div class="col-md-4" style="padding-left:250px;">
+								<div class="col-md-6">
 									<?php
 										echo "<h4>THW Licenses:</h4> <textarea id='med_lic' name='med_lic' cols='70' rows='5'>".$row["med_licenses"]."</textarea>";
 									?>
 								</div>
-								<div class="col-md-4" style="padding-left:300px;">
+								<div class="col-md-6">
 									<?php
 										echo "<h4>THW Gear:</h4> <textarea id='med_gear' name='med_gear' cols='70' rows='5'>".$row["med_gear"]."</textarea>";
 									?>
@@ -440,6 +459,7 @@
 							</div>
 						</div>
 					</div>
+                    <?php }; ?>
                     <div class='col-lg-12'>
                         <div class='panel panel-default'>
                         <div class='panel-heading'>

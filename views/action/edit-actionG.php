@@ -42,5 +42,5 @@
 		$this->errors[] = "Database connection problem.";
 	}	
 	
-	header('Location: index.php');
+	header('Location: editGang.php?gId='.$gID.'');
 ?>

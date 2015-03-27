@@ -62,7 +62,6 @@
 						<div class="col-lg-4" style="top:3px;float:right;">
 							<form style="float:right;" method='post' action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name='searchPlayer'>
 								<input id='searchText' type='text' name='searchText'>
-								<input class='btn btn-sm btn-primary'  type='submit'  name='pid' value='Search PID'>
 								<input class='btn btn-sm btn-primary'  type='submit'  name='name' value='Search Name'>
 							</form>
 						</div>
@@ -130,14 +129,8 @@
 												{
 													$searchText = $_POST['searchText'];
 																								
-													if (isset($_POST['pid'])) 
-													{
-														$sql = "SELECT * FROM `gangs` WHERE `owner` LIKE '%".$searchText."%' ".$max." ;";	
-													} 
-													else 
-													{
-														$sql = "SELECT * FROM `gangs` WHERE `name` LIKE '%".$searchText."%' ".$max." ;";
-													}												
+													$sql = "SELECT * FROM `gangs` WHERE `name` LIKE '%".$searchText."%' ".$max." ;";
+																									
 												}
 												else
 												{
@@ -153,10 +146,7 @@
 														echo "<td>".$row["bank"]."</td>";
 														echo "<td>".$row["maxmembers"]."</td>";
 														echo "<td>".$row["active"]."</td>";
-														echo "<td><form method='post' action='editGang.php' name='PlayerEdit'>";
-														echo "<input id='gID' type='hidden' name='gID' value='".$row["id"]."'>";
-														echo "<input class='btn btn-sm btn-primary'  type='submit'  name='edit' value='Edit Gang'>";
-														echo "</form></td>";
+														echo "<td><a href='/editGang.php?gId=".$row["id"]."'><div class='btn btn-sm btn-primary'>Edit Gang</div></a></td>";
 													echo "</tr>";
 												};
 												echo "</tbody></table>";
