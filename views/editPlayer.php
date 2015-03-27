@@ -2,13 +2,19 @@
 	// create a database connection, using the constants from config/db.php (which we loaded in index.php)
 	$db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-	if (isset($_POST["playerId"]))
+	if (isset($_GET["playerId"]))
 	{
-		$pId = $_POST["playerId"];		
+		$pId = $_GET["playerId"];	
+        $playersID = $_GET["playerId"];
+	}
+    else if (isset($_POST["playerId"]))
+	{
+		$pId = $_POST["playerId"];	
+        $playersID = $_POST["playerId"];
 	}
 	else
 	{
-		echo "<center><h1 style='color:red'>PLAYERID NOT SET</h1></center>";
+        echo "<center><h1 style='color:red'>PLAYERID NOT SET</h1></center>";
 	}
 
 	// change character set to utf8 and check it
@@ -17,8 +23,7 @@
 	}
 	
 	$pGID = "";
-	
-	$playersID = $_POST["playerId"];	
+		
 	$temp = '';
 
 	for ($i = 0; $i < 8; $i++) {
