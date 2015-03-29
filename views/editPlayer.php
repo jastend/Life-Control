@@ -299,6 +299,7 @@
 													$playersID = $row["playerid"];
 													echo "<center>";
 														echo "<h3>Name: ".$row["name"]."</h3>";
+                                                        echo "<h4>Last update: ".$row["timeupdated"]."</h4>";
 														echo "<h4>Aliases: ".$row["aliases"]."</h4>";
                                                         echo "<h4>Database ID: ".$row["uid"]."</h4>";
 														echo "<h4>Player ID: ".$playersID."</h4>";
