@@ -30,11 +30,10 @@ This version uses a modified rank system that includes 3 permission tiers. The f
 
 ### User
 
-1. Can't see richest players in Dashboard
-2. Can see Players *- with the exception of house information -* but not edit them *- with the exception of some vehicles*
-3. Can't see vehicle list, but access vehicles that got destroyed or aren't in the garage anymore
-4. Can't see houses
-5. Can access gangs but can't edit them
+1. Can see Players *- with the exception of house information -* but not edit them *- with the exception of some vehicles*
+2. Can't see vehicle list, but access vehicles that got destroyed or aren't in the garage anymore
+3. Can't see houses
+4. Can access gangs but can't edit them
 
 ## Issues / Questions
 

@@ -150,151 +150,198 @@
                         }
                     }
                 ?>
-				<div class="row">
-					<div class="col-lg-4">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title"><i class="fa fa-taxi fa-fw"></i>Police Overview</h3>
-							</div>
-							<div class="panel-body">
-								<div class="table-responsive">
-									<table class="table table-bordered table-hover table-striped">
-										<thead>
-											<tr>
-												<th>Player Name</th>
-												<th>Player ID</th>
-												<th>Rank</th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php
-												if (!$db_connection->connect_errno) 
-												{
-													$sql = "SELECT `name`,`coplevel`,`playerid` FROM `players` WHERE `coplevel` >= '1' ORDER BY `coplevel` DESC LIMIT 10";
-													$result_of_query = $db_connection->query($sql);
-													while($row = mysqli_fetch_assoc($result_of_query)) 
-													{
-														$playersID = $row["playerid"];
-														echo "<tr>";
-															echo "<td>".$row["name"]."</td>";
-															echo "<td>".$playersID."</td>";
-															echo "<td>".$row["coplevel"]."</td>";
-														echo "</tr>";
-													};
-												} 
-												else 
-												{
-													$this->errors[] = "Database connection problem.";
-												}
-											?>
-										</tbody>
-									</table>
-								</div>
-								<div class="text-right">
-									<a href="police.php">View All Police <i class="fa fa-arrow-circle-right"></i></a>
-								</div>
-							</div>
-						</div>
-					</div>
                     
-					<div class="col-lg-4">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title"><i class="fa fa-money fa-fw"></i>Top Ten Richest Players</h3>
-							</div>
-							<div class="panel-body">
-								<div class="table-responsive">
-									<table class="table table-bordered table-hover table-striped">
-										<thead>
-											<tr>
-												<th>Player Name</th>
-												<th>Player ID</th>
-												<th>Cash</th>
-												<th>Bank</th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php
-												if (!$db_connection->connect_errno) 
-												{
-													$sql = "SELECT `name`, `cash`, `bankacc`, `playerid` FROM `players` ORDER BY `bankacc` DESC LIMIT 10";
-													$result_of_query = $db_connection->query($sql);
-													while($row = mysqli_fetch_assoc($result_of_query)) 
-													{
-														$playersID = $row["playerid"];
-														echo "<tr>";
-															echo "<td>".$row["name"]."</td>";
-															echo "<td>".$playersID."</td>";
-															echo "<td>".$row["cash"]."</td>";
-															echo "<td>".$row["bankacc"]."</td>";
-														echo "</tr>";
-													};
-												} 
-												else 
-												{
-													$this->errors[] = "Database connection problem.";
-												}
-											?>
-										</tbody>
-									</table>
-								</div>
-								<div class="text-right">
-									<br/>
-								</div>
-							</div>
-						</div>
-					</div>
-                    <?php
-                        if($_SESSION['user_level'] >= '2') { ?>
-                            <div class="col-lg-4">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-ambulance fa-fw"></i>THW Overview</h3>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>Top Ten Richest Players (Cash)</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Player Name</th>
+                                                    <th>Player ID</th>
+                                                    <th>Cash</th>
+                                                    <th>Bank</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                    if (!$db_connection->connect_errno) 
+                                                    {
+                                                        $sql = "SELECT `name`, `cash`, `bankacc`, `playerid` FROM `players` ORDER BY `cash` DESC LIMIT 10";
+                                                        $result_of_query = $db_connection->query($sql);
+                                                        while($row = mysqli_fetch_assoc($result_of_query)) 
+                                                        {
+                                                            $playersID = $row["playerid"];
+                                                            echo "<tr>";
+                                                                echo "<td>".$row["name"]."</td>";
+                                                                echo "<td>".$playersID."</td>";
+                                                                echo "<td>".$row["cash"]."</td>";
+                                                                echo "<td>".$row["bankacc"]."</td>";
+                                                            echo "</tr>";
+                                                        };
+                                                    } 
+                                                    else 
+                                                    {
+                                                        $this->errors[] = "Database connection problem.";
+                                                    }
+                                                ?>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <div class="panel-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered table-hover table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Player Name</th>
-                                                        <th>Player ID</th>
-                                                        <th>Rank</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                        if (!$db_connection->connect_errno) 
-                                                        {
-                                                            $sql = "SELECT `name`,`mediclevel`,`playerid` FROM `players` WHERE `mediclevel` >= '1' ORDER BY `mediclevel` DESC LIMIT 10";
-                                                            $result_of_query = $db_connection->query($sql);
-                                                            while($row = mysqli_fetch_assoc($result_of_query)) 
-                                                            {
-                                                                $playersID = $row["playerid"];
-                                                                echo "<tr>";
-                                                                    echo "<td>".$row["name"]."</td>";
-                                                                    echo "<td>".$playersID."</td>";
-                                                                    echo "<td>".$row["mediclevel"]."</td>";
-                                                                echo "</tr>";
-                                                            };
-                                                        } 
-                                                        else 
-                                                        {
-                                                            $this->errors[] = "Database connection problem.";
-                                                        }
-                                                    ?> 
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="text-right">
-                                            <a href="medic.php">View All THWs <i class="fa fa-arrow-circle-right"></i></a>
-                                        </div>
+                                    <div class="text-right">
+                                        <br/>
                                     </div>
                                 </div>
                             </div>
-                        <?php };
-                    ?>
-                </div>
-                <!-- /.row -->			
+                        </div>
+                        
+                        <div class="col-lg-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>Top Ten Richest Players (Bank)</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Player Name</th>
+                                                    <th>Player ID</th>
+                                                    <th>Cash</th>
+                                                    <th>Bank</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                    if (!$db_connection->connect_errno) 
+                                                    {
+                                                        $sql = "SELECT `name`, `cash`, `bankacc`, `playerid` FROM `players` ORDER BY `bankacc` DESC LIMIT 10";
+                                                        $result_of_query = $db_connection->query($sql);
+                                                        while($row = mysqli_fetch_assoc($result_of_query)) 
+                                                        {
+                                                            $playersID = $row["playerid"];
+                                                            echo "<tr>";
+                                                                echo "<td>".$row["name"]."</td>";
+                                                                echo "<td>".$playersID."</td>";
+                                                                echo "<td>".$row["cash"]."</td>";
+                                                                echo "<td>".$row["bankacc"]."</td>";
+                                                            echo "</tr>";
+                                                        };
+                                                    } 
+                                                    else 
+                                                    {
+                                                        $this->errors[] = "Database connection problem.";
+                                                    }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="text-right">
+                                        <br/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                            
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-taxi fa-fw"></i>Police Overview</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Player Name</th>
+                                                    <th>Player ID</th>
+                                                    <th>Rank</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                    if (!$db_connection->connect_errno) 
+                                                    {
+                                                        $sql = "SELECT `name`,`coplevel`,`playerid` FROM `players` WHERE `coplevel` >= '1' ORDER BY `coplevel` DESC LIMIT 10";
+                                                        $result_of_query = $db_connection->query($sql);
+                                                        while($row = mysqli_fetch_assoc($result_of_query)) 
+                                                        {
+                                                            $playersID = $row["playerid"];
+                                                            echo "<tr>";
+                                                                echo "<td>".$row["name"]."</td>";
+                                                                echo "<td>".$playersID."</td>";
+                                                                echo "<td>".$row["coplevel"]."</td>";
+                                                            echo "</tr>";
+                                                        };
+                                                    } 
+                                                    else 
+                                                    {
+                                                        $this->errors[] = "Database connection problem.";
+                                                    }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="text-right">
+                                        <a href="police.php">View All Police <i class="fa fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-ambulance fa-fw"></i>THW Overview</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Player Name</th>
+                                                    <th>Player ID</th>
+                                                    <th>Rank</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                    if (!$db_connection->connect_errno) 
+                                                    {
+                                                        $sql = "SELECT `name`,`mediclevel`,`playerid` FROM `players` WHERE `mediclevel` >= '1' ORDER BY `mediclevel` DESC LIMIT 10";
+                                                        $result_of_query = $db_connection->query($sql);
+                                                        while($row = mysqli_fetch_assoc($result_of_query)) 
+                                                        {
+                                                            $playersID = $row["playerid"];
+                                                            echo "<tr>";
+                                                                echo "<td>".$row["name"]."</td>";
+                                                                echo "<td>".$playersID."</td>";
+                                                                echo "<td>".$row["mediclevel"]."</td>";
+                                                            echo "</tr>";
+                                                        };
+                                                    } 
+                                                    else 
+                                                    {
+                                                        $this->errors[] = "Database connection problem.";
+                                                    }
+                                                ?> 
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="text-right">
+                                        <a href="medic.php">View All THWs <i class="fa fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>			
             </div>
             <!-- /.container-fluid -->
         </div>
