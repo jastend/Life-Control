@@ -152,7 +152,7 @@
                 ?>
                     
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>Top Ten Richest Players (Cash)</h3>
@@ -200,7 +200,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>Top Ten Richest Players (Bank)</h3>
@@ -250,7 +250,7 @@
                     </div>
                             
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><i class="fa fa-taxi fa-fw"></i>Police Overview</h3>
@@ -296,7 +296,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><i class="fa fa-ambulance fa-fw"></i>THW Overview</h3>
