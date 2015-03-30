@@ -98,8 +98,259 @@
                     </div>
                 </div>
                 <!-- /.row -->
-                 <?php
-                    if($_SESSION['user_level'] >= '2') { ?>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-child fa-fw"></i> Player</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form method="post" action="editPlayer-actionProfile.php" name="editform">
+                                <?php
+                                    if (!$db_connection->connect_errno) 
+                                    {
+                                        $sql = 'SELECT * FROM `players` WHERE `playerid` ="'.$pId.'";';
+                                        $result_of_query = $db_connection->query($sql);
+                                        if ($result_of_query->num_rows > 0)
+                                        {
+                                            while($row = mysqli_fetch_assoc($result_of_query)) 
+                                            {
+                                                $playersID = $row["playerid"];
+                                                echo "<center>";
+                                                    echo "<h3>Name: ".$row["name"]."</h3>";
+                                                    echo "<h4>Last update: ".$row["timeupdated"]."</h4>";
+                                                    echo "<h4>Aliases: ".$row["aliases"]."</h4>";
+                                                    echo "<h4>Database ID: ".$row["uid"]."</h4>";
+                                                    echo "<h4>Player ID: ".$playersID."</h4>";
+                                                    echo "<h4>GUID: ".$pGID."</h4>";                        
+                                                    echo "<h4>Cash:    <input id='player_cash' name='player_cash' type='text' value='".$row["cash"]."'></td><br/>";
+                                                    echo "<h4>Bank:    <input id='player_bank' name='player_bank' type='text' value='".$row["bankacc"]."'></td><br/>";
+                                                    echo "<h4>Cop: ";
+                                                    echo "<select id='player_coplvl' name='player_coplvl'>";
+                                                        echo '<option value="0"';
+                                                            if($row['coplevel']==0){echo ' selected';}
+                                                        echo '>0</option>';	
+                                                        echo '<option value="1"';
+                                                            if($row['coplevel']==1){echo ' selected';}
+                                                        echo '>1</option>';	
+                                                        echo '<option value="2"';
+                                                            if($row['coplevel']==2){echo ' selected';}
+                                                        echo '>2</option>';
+                                                        echo '<option value="3"';
+                                                            if($row['coplevel']==3){echo ' selected';}
+                                                        echo '>3</option>';
+                                                        echo '<option value="4"';
+                                                            if($row['coplevel']==4){echo ' selected';}
+                                                        echo '>4</option>';
+                                                        echo '<option value="5"';
+                                                            if($row['coplevel']==5){echo ' selected';}
+                                                        echo '>5</option>';
+                                                        echo '<option value="6"';
+                                                            if($row['coplevel']==6){echo ' selected';}
+                                                        echo '>6</option>';
+                                                        echo '<option value="7"';
+                                                            if($row['coplevel']==7){echo ' selected';}
+                                                        echo '>7</option></h4>';
+                                                        echo '<option value="8"';
+                                                            if($row['coplevel']==8){echo ' selected';}
+                                                        echo '>8</option></h4>';
+                                                        echo '<option value="9"';
+                                                            if($row['coplevel']==9){echo ' selected';}
+                                                        echo '>9</option></h4>';
+                                                    echo "</select>";
+                                                    echo "<h4>THW: ";
+                                                    echo "<select id='player_medlvl' name='player_medlvl'>";
+                                                        echo '<option value="0"';
+                                                            if($row['mediclevel']==0){echo ' selected';}
+                                                        echo '>0</option>';	
+                                                        echo '<option value="1"';
+                                                            if($row['mediclevel']==1){echo ' selected';}
+                                                        echo '>1</option>';	
+                                                        echo '<option value="2"';
+                                                            if($row['mediclevel']==2){echo ' selected';}
+                                                        echo '>2</option>';
+                                                    echo "</select>";
+                                                    echo "<h4>Admin: ";
+                                                    echo "<select id='player_adminlvl' name='player_adminlvl'>";
+                                                        echo '<option value="0"';
+                                                            if($row['adminlevel']==0){echo ' selected';}
+                                                        echo '>0</option>';	
+                                                        echo '<option value="1"';
+                                                            if($row['adminlevel']==1){echo ' selected';}
+                                                        echo '>1</option>';	
+                                                        echo '<option value="2"';
+                                                            if($row['adminlevel']==2){echo ' selected';}
+                                                        echo '>2</option>';
+                                                        echo '<option value="3"';
+                                                            if($row['adminlevel']==3){echo ' selected';}
+                                                        echo '>3</option>';
+                                                    echo "</select>";
+                                                    echo "<h4>Donator: ";
+                                                    echo "<select id='player_donlvl' name='player_donlvl'>";
+                                                        echo '<option value="0"';
+                                                            if($row['donatorlvl']==0){echo ' selected';}
+                                                        echo '>0</option>';	
+                                                        echo '<option value="1"';
+                                                            if($row['donatorlvl']==1){echo ' selected';}
+                                                        echo '>1</option>';	
+                                                        echo '<option value="2"';
+                                                            if($row['donatorlvl']==2){echo ' selected';}
+                                                        echo '>2</option>';
+                                                        echo '<option value="3"';
+                                                            if($row['donatorlvl']==3){echo ' selected';}
+                                                        echo '>3</option>';
+                                                        echo '<option value="4"';
+                                                            if($row['donatorlvl']==4){echo ' selected';}
+                                                        echo '>4</option>';
+                                                        echo '<option value="5"';
+                                                            if($row['donatorlvl']==5){echo ' selected';}
+                                                        echo '>5</option>';
+                                                    echo "</select>";
+                                                echo "</center>";
+                                ?>
+                                <?php
+                                                $sql = 'SELECT * FROM `gangs` where `members` LIKE "%'.$pId.'%"';
+                                                    $result_of_query = $db_connection->query($sql);
+                                                    while($row = mysqli_fetch_assoc($result_of_query)) 
+                                                    {
+                                                         echo "<center><h4>Gang: <a href='/editGang.php?gId=".$row["id"]."'>".$row["name"]."</a></h4></center>";                                                            
+                                                    };
+                                ?>
+                                <center>
+                                    <?php
+                                        if($_SESSION['user_level'] >= '2')
+                                        {
+                                            echo "<input id='playerId' type='hidden' name='playerId' value='".$playersID."'>";   
+                                            echo "<input class='btn btn-lg btn-primary'  type='submit'  name='edit' value='Update Profile'>";
+                                        };
+                                    ?>
+                                    <br/>
+                                </center>
+                            </form>
+                        </div>		
+                    </div>
+                </div>
+                <div class="col-lg-8" style="float:right">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-car fa-fw"></i> Vehicles Quick Look</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Class</th>
+                                            <th>Alive</th>
+                                            <th>Active</th>
+                                            <th>Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            if (!$db_connection->connect_errno) 
+                                            {
+                                                $sql = "SELECT * FROM `vehicles` WHERE `pid` = '".$pId."' ORDER BY `id` DESC";
+                                                $result_of_query = $db_connection->query($sql);
+                                                while($row = mysqli_fetch_assoc($result_of_query)) 
+                                                {
+                                                    $vehID = $row["id"];
+                                                    echo "<tr>";
+                                                        echo "<td>";
+                                                        if($row['classname']=='C_Offroad_01_F'){echo 'Offroad';}
+                                                        if($row['classname']=='C_SUV_01_F'){echo 'SUV';}
+                                                        if($row['classname']=='C_Offroad_01_repair_F'){echo 'Offroad (Repair)';}
+                                                        if($row['classname']=='O_Heli_Light_02_unarmed_F'){echo 'PO-30 Orca';}
+                                                        if($row['classname']=='C_Heli_Light_01_civil_F'){echo 'M-900';}
+                                                        if($row['classname']=='B_Quadbike_01_F'){echo 'Quadbike';}
+                                                        if($row['classname']=='C_Hatchback_01_F'){echo 'Hatchback';}
+                                                        if($row['classname']=='C_Hatchback_01_sport_F'){echo 'Hatchback Sport';}
+                                                        if($row['classname']=='C_Van_01_transport_F'){echo 'Truck';}
+                                                        if($row['classname']=='C_Van_01_box_F'){echo 'Truck Boxer';}
+                                                        if($row['classname']=='C_Van_01_fuel_F'){echo 'Fuel Truck';}
+                                                        if($row['classname']=='I_Truck_02_transport_F'){echo 'Zamak Transport';}
+                                                        if($row['classname']=='O_Truck_03_transport_F'){echo 'Tempest Transport';}
+                                                        if($row['classname']=='B_Truck_01_transport_F'){echo 'HEMTT Transport';}
+                                                        if($row['classname']=='O_Truck_02_covered_F'){echo 'Zamak Transport (Covered)';}
+                                                        if($row['classname']=='O_Truck_03_covered_F'){echo 'Tempest Transport (Covered)';}
+                                                        if($row['classname']=='B_Truck_01_covered_F'){echo 'HEMTT Transport (Covered)';}
+                                                        if($row['classname']=='B_Truck_01_box_F'){echo 'HEMTT Box';}
+                                                        if($row['classname']=='O_Truck_03_ammo_F'){echo 'Tempest Ammo';}
+                                                        if($row['classname']=='I_Truck_02_fuel_F'){echo 'Zamak Fuel';}
+                                                        if($row['classname']=='O_Truck_03_fuel_F'){echo 'Tempest Fuel';}
+                                                        if($row['classname']=='B_Truck_01_fuel_F'){echo 'HEMTT Fuel';}
+                                                        if($row['classname']=='O_Truck_03_device_F'){echo 'Tempest (Device)';}
+                                                        if($row['classname']=='I_Heli_Transport_02_F'){echo 'CH-49 Mohawk';}
+                                                        if($row['classname']=='O_Heli_Transport_04_F'){echo 'Mi-290 Taru';}
+                                                        if($row['classname']=='O_Heli_Transport_04_covered_F'){echo 'Mi-290 Taru (Transport)';}
+                                                        if($row['classname']=='O_Heli_Transport_04_box_F'){echo 'Mi-290 Taru (Cargo)';}
+                                                        if($row['classname']=='O_Heli_Transport_04_fuel_F'){echo 'Mi-290 Taru (Fuel)';}
+                                                        if($row['classname']=='C_Rubberboat'){echo 'Rescue Boat';}
+                                                        if($row['classname']=='C_Boat_Civil_01_F'){echo 'Motorboat';}
+                                                        if($row['classname']=='B_SDV_01_F'){echo 'SDV (Submarine)';}
+                                                        if($row['classname']=='B_G_Offroad_01_F'){echo 'Offroad';}
+                                                        if($row['classname']=='B_Heli_Light_01_F'){echo 'MH-9 Hummingbird';}
+                                                        if($row['classname']=='O_MRAP_02_F'){echo 'iFrit';}
+                                                        if($row['classname']=='B_G_Offroad_01_armed_F'){echo 'Offroad (Armed)';}
+                                                        if($row['classname']=='O_Heli_Transport_04_bench_F'){echo 'Mi-290 Taru (Bench)';}
+                                                        if($row['classname']=='O_Heli_Attack_02_black_F'){echo 'Mi-48 Kajman (Black)';}
+                                                        if($row['classname']=='B_MRAP_01_F'){echo 'Hunter';}
+                                                        if($row['classname']=='I_MRAP_03_F'){echo 'Strider';}
+                                                        if($row['classname']=='B_MRAP_01_hmg_F'){echo 'Hunter HMG';}
+                                                        if($row['classname']=='I_Heli_light_03_unarmed_F'){echo 'WY-55 Hellcat (Green)';}
+                                                        if($row['classname']=='I_Heli_light_03_F'){echo 'WY-55 Hellcat';}
+                                                        if($row['classname']=='B_Heli_Transport_01_F'){echo 'UH-80 Ghost Hawk';}
+                                                        if($row['classname']=='B_Heli_Transport_03_F'){echo 'CH-67 Huron';}
+                                                        if($row['classname']=='B_Heli_Transport_03_unarmed_F'){echo 'CH-67 Huron (Black)';}
+                                                        if($row['classname']=='B_Boat_Transport_01_F'){echo 'Assault Boat';}
+                                                        if($row['classname']=='C_Boat_Civil_01_police_F'){echo 'Motorboat (Police)';}
+                                                        if($row['classname']=='B_Boat_Armed_01_minigun_F'){echo 'Speedboat Minigun';}
+                                                        if($row['classname']=='O_Truck_02_Fuel_F'){echo 'Zamak Fuel';}
+                                                        if($row['classname']=='O_Truck_03_fuel_F'){echo 'Tempest Fuel';}
+                                                        if($row['classname']=='B_Truck_01_ammo_F'){echo 'HEMTT Ammo';}
+                                                        if($row['classname']=='O_Truck_02_box_F'){echo 'Zamak Repair';}
+                                                        if($row['classname']=='O_Heli_Transport_04_medevac_F'){echo 'Mi-290 Taru (Medical)';}
+                                                        if($row['classname']=='O_Boat_Armed_01_hmg_F'){echo 'Speedboat HMG';}
+                                                        if($row['classname']=='I_MRAP_03_hmg_F'){echo 'Strider HMG';}
+                                                        if($row['classname']=='O_MRAP_02_hmg_F'){echo 'Ifrit HMG';}
+                                                        if($row['classname']=='O_Truck_03_Ammo_F'){echo 'Tempest Ammo';}
+                                                        if($row['classname']=='Box_IND_AmmoVeh_F'){echo 'Box_IND_AmmoVeh_F';}
+                                                        if($row['classname']=='B_Slingload_01_Cargo_F'){echo 'B_Slingload_01_Cargo_F';}
+                                                        if($row['classname']=='C_supplyCrate_F'){echo 'C_supplyCrate_F';}
+                                                        if($row['classname']=='B_Heli_Attack_01_F'){echo 'AH-99 Blackfoot';}
+                                                        echo "</td>";
+                                                        echo "<td>".$row["alive"]."</td>";
+                                                        echo "<td>".$row["active"]."</td>";
+                                                        if($_SESSION['user_level'] == '1') {
+                                                            if ($row["alive"] == '1' && $row["active"] == '0') {
+                                                                echo "";
+                                                            }
+                                                            else {
+                                                                echo "<td><form method='post' action='editVeh.php' name='PlayerEdit'>";
+                                                                echo "<input id='vehID' type='hidden' name='vehID' value='".$vehID."'>";
+                                                                echo "<input class='btn btn-sm btn-primary'  type='submit'  name='editVeh' value='Edit Vehicle'>";
+                                                                echo "</form></td>";
+                                                            };
+                                                        } else {                                        
+                                                        echo "<td><form method='post' action='editVeh.php' name='PlayerEdit'>";
+                                                        echo "<input id='vehID' type='hidden' name='vehID' value='".$vehID."'>";
+                                                        echo "<input class='btn btn-sm btn-primary'  type='submit'  name='editVeh' value='Edit Vehicle'>";
+                                                        echo "</form></td>";
+                                                        };
+                                                    echo "</tr>";
+                                                };
+                                            } 
+                                            else 
+                                            {
+                                                $this->errors[] = "Database connection problem.";
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php if($_SESSION['user_level'] >= '2') { ?>
 					<div class="col-lg-4">
                        <div class="panel panel-default">
                             <div class="panel-heading">
@@ -159,247 +410,7 @@
                         </div>
                     </div>
                     <?php }; ?>
-					<div class="col-lg-4" style="float:right;">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-car fa-fw"></i> Vehicles Quick Look</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Class</th>
-                                                <th>Alive</th>
-                                                <th>Active</th>
-                                                <th>Edit</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-											<?php
-												if (!$db_connection->connect_errno) 
-												{
-													$sql = "SELECT * FROM `vehicles` WHERE `pid` = '".$pId."' ORDER BY `id` DESC";
-													$result_of_query = $db_connection->query($sql);
-													while($row = mysqli_fetch_assoc($result_of_query)) 
-													{
-														$vehID = $row["id"];
-														echo "<tr>";
-															echo "<td>";
-                                                            if($row['classname']=='C_Offroad_01_F'){echo 'Offroad';}
-                                                            if($row['classname']=='C_SUV_01_F'){echo 'SUV';}
-                                                            if($row['classname']=='C_Offroad_01_repair_F'){echo 'Offroad (Repair)';}
-                                                            if($row['classname']=='O_Heli_Light_02_unarmed_F'){echo 'PO-30 Orca';}
-                                                            if($row['classname']=='C_Heli_Light_01_civil_F'){echo 'M-900';}
-                                                            if($row['classname']=='B_Quadbike_01_F'){echo 'Quadbike';}
-                                                            if($row['classname']=='C_Hatchback_01_F'){echo 'Hatchback';}
-                                                            if($row['classname']=='C_Hatchback_01_sport_F'){echo 'Hatchback Sport';}
-                                                            if($row['classname']=='C_Van_01_transport_F'){echo 'Truck';}
-                                                            if($row['classname']=='C_Van_01_box_F'){echo 'Truck Boxer';}
-                                                            if($row['classname']=='C_Van_01_fuel_F'){echo 'Fuel Truck';}
-                                                            if($row['classname']=='I_Truck_02_transport_F'){echo 'Zamak Transport';}
-                                                            if($row['classname']=='O_Truck_03_transport_F'){echo 'Tempest Transport';}
-                                                            if($row['classname']=='B_Truck_01_transport_F'){echo 'HEMTT Transport';}
-                                                            if($row['classname']=='O_Truck_02_covered_F'){echo 'Zamak Transport (Covered)';}
-                                                            if($row['classname']=='O_Truck_03_covered_F'){echo 'Tempest Transport (Covered)';}
-                                                            if($row['classname']=='B_Truck_01_covered_F'){echo 'HEMTT Transport (Covered)';}
-                                                            if($row['classname']=='B_Truck_01_box_F'){echo 'HEMTT Box';}
-                                                            if($row['classname']=='O_Truck_03_ammo_F'){echo 'Tempest Ammo';}
-                                                            if($row['classname']=='I_Truck_02_fuel_F'){echo 'Zamak Fuel';}
-                                                            if($row['classname']=='O_Truck_03_fuel_F'){echo 'Tempest Fuel';}
-                                                            if($row['classname']=='B_Truck_01_fuel_F'){echo 'HEMTT Fuel';}
-                                                            if($row['classname']=='O_Truck_03_device_F'){echo 'Tempest (Device)';}
-                                                            if($row['classname']=='I_Heli_Transport_02_F'){echo 'CH-49 Mohawk';}
-                                                            if($row['classname']=='O_Heli_Transport_04_F'){echo 'Mi-290 Taru';}
-                                                            if($row['classname']=='O_Heli_Transport_04_covered_F'){echo 'Mi-290 Taru (Transport)';}
-                                                            if($row['classname']=='O_Heli_Transport_04_box_F'){echo 'Mi-290 Taru (Cargo)';}
-                                                            if($row['classname']=='O_Heli_Transport_04_fuel_F'){echo 'Mi-290 Taru (Fuel)';}
-                                                            if($row['classname']=='C_Rubberboat'){echo 'Rescue Boat';}
-                                                            if($row['classname']=='C_Boat_Civil_01_F'){echo 'Motorboat';}
-                                                            if($row['classname']=='B_SDV_01_F'){echo 'SDV (Submarine)';}
-                                                            if($row['classname']=='B_G_Offroad_01_F'){echo 'Offroad';}
-                                                            if($row['classname']=='B_Heli_Light_01_F'){echo 'MH-9 Hummingbird';}
-                                                            if($row['classname']=='O_MRAP_02_F'){echo 'iFrit';}
-                                                            if($row['classname']=='B_G_Offroad_01_armed_F'){echo 'Offroad (Armed)';}
-                                                            if($row['classname']=='O_Heli_Transport_04_bench_F'){echo 'Mi-290 Taru (Bench)';}
-                                                            if($row['classname']=='O_Heli_Attack_02_black_F'){echo 'Mi-48 Kajman (Black)';}
-                                                            if($row['classname']=='B_MRAP_01_F'){echo 'Hunter';}
-                                                            if($row['classname']=='I_MRAP_03_F'){echo 'Strider';}
-                                                            if($row['classname']=='B_MRAP_01_hmg_F'){echo 'Hunter HMG';}
-                                                            if($row['classname']=='I_Heli_light_03_unarmed_F'){echo 'WY-55 Hellcat (Green)';}
-                                                            if($row['classname']=='I_Heli_light_03_F'){echo 'WY-55 Hellcat';}
-                                                            if($row['classname']=='B_Heli_Transport_01_F'){echo 'UH-80 Ghost Hawk';}
-                                                            if($row['classname']=='B_Heli_Transport_03_F'){echo 'CH-67 Huron';}
-                                                            if($row['classname']=='B_Heli_Transport_03_unarmed_F'){echo 'CH-67 Huron (Black)';}
-                                                            if($row['classname']=='B_Boat_Transport_01_F'){echo 'Assault Boat';}
-                                                            if($row['classname']=='C_Boat_Civil_01_police_F'){echo 'Motorboat (Police)';}
-                                                            if($row['classname']=='B_Boat_Armed_01_minigun_F'){echo 'Speedboat Minigun';}
-                                                            if($row['classname']=='O_Truck_02_Fuel_F'){echo 'Zamak Fuel';}
-                                                            if($row['classname']=='O_Truck_03_fuel_F'){echo 'Tempest Fuel';}
-                                                            if($row['classname']=='B_Truck_01_ammo_F'){echo 'HEMTT Ammo';}
-                                                            if($row['classname']=='O_Truck_02_box_F'){echo 'Zamak Repair';}
-                                                            if($row['classname']=='O_Heli_Transport_04_medevac_F'){echo 'Mi-290 Taru (Medical)';}
-                                                            if($row['classname']=='O_Boat_Armed_01_hmg_F'){echo 'Speedboat HMG';}
-                                                            if($row['classname']=='I_MRAP_03_hmg_F'){echo 'Strider HMG';}
-                                                            if($row['classname']=='O_MRAP_02_hmg_F'){echo 'Ifrit HMG';}
-                                                            if($row['classname']=='O_Truck_03_Ammo_F'){echo 'Tempest Ammo';}
-                                                            if($row['classname']=='Box_IND_AmmoVeh_F'){echo 'Box_IND_AmmoVeh_F';}
-                                                            if($row['classname']=='B_Slingload_01_Cargo_F'){echo 'B_Slingload_01_Cargo_F';}
-                                                            if($row['classname']=='C_supplyCrate_F'){echo 'C_supplyCrate_F';}
-                                                            if($row['classname']=='B_Heli_Attack_01_F'){echo 'AH-99 Blackfoot';}
-                                                            echo "</td>";
-                                                            echo "<td>".$row["alive"]."</td>";
-                                                            echo "<td>".$row["active"]."</td>";
-                                                            if($_SESSION['user_level'] == '1') {
-                                                                if ($row["alive"] == '1' && $row["active"] == '0') {
-                                                                    echo "";
-                                                                }
-                                                                else {
-                                                                    echo "<td><form method='post' action='editVeh.php' name='PlayerEdit'>";
-                                                                    echo "<input id='vehID' type='hidden' name='vehID' value='".$vehID."'>";
-                                                                    echo "<input class='btn btn-sm btn-primary'  type='submit'  name='editVeh' value='Edit Vehicle'>";
-                                                                    echo "</form></td>";
-                                                                };
-                                                            } else {                                        
-															echo "<td><form method='post' action='editVeh.php' name='PlayerEdit'>";
-															echo "<input id='vehID' type='hidden' name='vehID' value='".$vehID."'>";
-															echo "<input class='btn btn-sm btn-primary'  type='submit'  name='editVeh' value='Edit Vehicle'>";
-															echo "</form></td>";
-                                                            };
-														echo "</tr>";
-													};
-												} 
-												else 
-												{
-													$this->errors[] = "Database connection problem.";
-												}
-											?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4"style="float:left;">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-child fa-fw"></i> Player</h3>
-                            </div>
-                            <div class="panel-body">
-								<form method="post" action="edit-action.php" name="editform">
-									<?php
-										if (!$db_connection->connect_errno) 
-										{
-											$sql = 'SELECT * FROM `players` WHERE `playerid` ="'.$pId.'";';
-											$result_of_query = $db_connection->query($sql);
-											if ($result_of_query->num_rows > 0)
-											{
-												while($row = mysqli_fetch_assoc($result_of_query)) 
-												{
-													$playersID = $row["playerid"];
-													echo "<center>";
-														echo "<h3>Name: ".$row["name"]."</h3>";
-                                                        echo "<h4>Last update: ".$row["timeupdated"]."</h4>";
-														echo "<h4>Aliases: ".$row["aliases"]."</h4>";
-                                                        echo "<h4>Database ID: ".$row["uid"]."</h4>";
-														echo "<h4>Player ID: ".$playersID."</h4>";
-														echo "<h4>GUID: ".$pGID."</h4>";                        
-														echo "<h4>Cash:    <input id='player_cash' name='player_cash' type='text' value='".$row["cash"]."'></td><br/>";
-														echo "<h4>Bank:    <input id='player_bank' name='player_bank' type='text' value='".$row["bankacc"]."'></td><br/>";
-														echo "<h4>Cop: ";
-														echo "<select id='player_coplvl' name='player_coplvl'>";
-															echo '<option value="0"';
-																if($row['coplevel']==0){echo ' selected';}
-															echo '>0</option>';	
-															echo '<option value="1"';
-																if($row['coplevel']==1){echo ' selected';}
-															echo '>1</option>';	
-															echo '<option value="2"';
-																if($row['coplevel']==2){echo ' selected';}
-															echo '>2</option>';
-															echo '<option value="3"';
-																if($row['coplevel']==3){echo ' selected';}
-															echo '>3</option>';
-															echo '<option value="4"';
-																if($row['coplevel']==4){echo ' selected';}
-															echo '>4</option>';
-															echo '<option value="5"';
-																if($row['coplevel']==5){echo ' selected';}
-															echo '>5</option>';
-															echo '<option value="6"';
-																if($row['coplevel']==6){echo ' selected';}
-															echo '>6</option>';
-															echo '<option value="7"';
-																if($row['coplevel']==7){echo ' selected';}
-															echo '>7</option></h4>';
-                                                            echo '<option value="8"';
-																if($row['coplevel']==8){echo ' selected';}
-															echo '>8</option></h4>';
-                                                            echo '<option value="9"';
-																if($row['coplevel']==9){echo ' selected';}
-															echo '>9</option></h4>';
-														echo "</select>";
-														echo "<h4>THW: ";
-														echo "<select id='player_medlvl' name='player_medlvl'>";
-															echo '<option value="0"';
-																if($row['mediclevel']==0){echo ' selected';}
-															echo '>0</option>';	
-															echo '<option value="1"';
-																if($row['mediclevel']==1){echo ' selected';}
-															echo '>1</option>';	
-															echo '<option value="2"';
-																if($row['mediclevel']==2){echo ' selected';}
-															echo '>2</option>';
-														echo "</select>";
-														echo "<h4>Admin: ";
-														echo "<select id='player_adminlvl' name='player_adminlvl'>";
-															echo '<option value="0"';
-																if($row['adminlevel']==0){echo ' selected';}
-															echo '>0</option>';	
-															echo '<option value="1"';
-																if($row['adminlevel']==1){echo ' selected';}
-															echo '>1</option>';	
-															echo '<option value="2"';
-																if($row['adminlevel']==2){echo ' selected';}
-															echo '>2</option>';
-															echo '<option value="3"';
-																if($row['adminlevel']==3){echo ' selected';}
-															echo '>3</option>';
-														echo "</select>";
-														echo "<h4>Donator: ";
-														echo "<select id='player_donlvl' name='player_donlvl'>";
-															echo '<option value="0"';
-																if($row['donatorlvl']==0){echo ' selected';}
-															echo '>0</option>';	
-															echo '<option value="1"';
-																if($row['donatorlvl']==1){echo ' selected';}
-															echo '>1</option>';	
-															echo '<option value="2"';
-																if($row['donatorlvl']==2){echo ' selected';}
-															echo '>2</option>';
-															echo '<option value="3"';
-																if($row['donatorlvl']==3){echo ' selected';}
-															echo '>3</option>';
-															echo '<option value="4"';
-																if($row['donatorlvl']==4){echo ' selected';}
-															echo '>4</option>';
-															echo '<option value="5"';
-																if($row['donatorlvl']==5){echo ' selected';}
-															echo '>5</option>';
-														echo "</select>";
-													echo "</center>";
-									?>
-                                    <?php
-                                                    $sql = 'SELECT * FROM `gangs` where `members` LIKE "%'.$pId.'%"';
-                                                        $result_of_query = $db_connection->query($sql);
-                                                        while($row = mysqli_fetch_assoc($result_of_query)) 
-                                                        {
-                                                             echo "<center><h4>Gang: <a href='/editGang.php?gId=".$row["id"]."'>".$row["name"]."</a></h4></center>";                                                            
-                                                        };
-                                    ?>
-							</div>		
-						</div>
-					</div>
+                    <form method="post" action="edit-action.php" name="editform">
                     <?php
                     $sql = 'SELECT * FROM `players` WHERE `playerid` ="'.$pId.'";';
                     $result_of_query = $db_connection->query($sql);
@@ -568,18 +579,18 @@
                     </div>
 					<div class="col-md-4"></div>					
 					<div class="col-md-4">
-								<center>
-									<?php
-                                        if($_SESSION['user_level'] >= '2')
-                                        {
-                                            echo "<input id='playerId' type='hidden' name='playerId' value='".$playersID."'>";   
-                                            echo "<input class='btn btn-lg btn-primary'  type='submit'  name='edit' value='Submit Changes'>";
-                                        } else {
-                                            echo "Your permission level is insufficient to submit these changes.";
-                                        };
-									?>
-									<br/>
-								</center>
+                        <center>
+                            <?php
+                                if($_SESSION['user_level'] >= '2')
+                                {
+                                    echo "<input id='playerId' type='hidden' name='playerId' value='".$playersID."'>";   
+                                    echo "<input class='btn btn-lg btn-primary'  type='submit'  name='edit' value='Submit Changes'>";
+                                } else {
+                                    echo "Your permission level is insufficient to submit these changes.";
+                                };
+                            ?>
+                            <br/>
+                        </center>
 					</div>
                     <div class="col-md-12" style="margin-bottom: 20px;"></div>
                     <div class="col-md-12">    

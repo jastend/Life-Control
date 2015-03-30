@@ -5,12 +5,6 @@
 	if (isset($_POST["playerId"]))
 	{
 		$pId   = $_POST["playerId"];
-		$pCash = $_POST["player_cash"];
-		$pBank = $_POST["player_bank"];
-		$pCopLvl = $_POST["player_coplvl"];
-		$pMedLvl = $_POST["player_medlvl"];
-		$pAdminLvl = $_POST["player_adminlvl"];
-		$pDonLvl = $_POST["player_donlvl"];
 		$pcopLic = $_POST["cop_lic"];
 		$pcopG = $_POST["cop_gear"];
 		$pcivLic = $_POST["civ_lic"];
@@ -50,7 +44,7 @@
 	if (!$db_connection->connect_errno) 
 	{
 		
-		$sql = "UPDATE `players` SET `cash`='".$pCash."',`bankacc`='".$pBank."',`coplevel`='".$pCopLvl."',`cop_licenses`='".$pcopLic."',`civ_licenses`='".$pcivLic."',`med_licenses`='".$pmedLic."',`cop_gear`='".$pcopG."',`med_gear`='".$pmedG."',`mediclevel`='".$pMedLvl."',`adminlevel`='".$pAdminLvl."',`donatorlvl`='".$pDonLvl."',`civ_gear`='".$pcivG."' WHERE `playerid` = '".$pId."'";
+		$sql = "UPDATE `players` SET `cop_licenses`='".$pcopLic."',`civ_licenses`='".$pcivLic."',`med_licenses`='".$pmedLic."',`cop_gear`='".$pcopG."',`med_gear`='".$pmedG."',`civ_gear`='".$pcivG."' WHERE `playerid` = '".$pId."'";
         
         $result_of_query = $db_connection->query($sql);
 
