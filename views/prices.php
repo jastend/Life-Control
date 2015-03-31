@@ -68,7 +68,7 @@
                 </div>
                 <!-- /.row -->
 
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Prices
@@ -80,8 +80,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Ressource</th>
-                                                        <th>Price</th>
-                                                        <th>Units Sold</th>
+                                                        <th>Stock</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -98,68 +97,40 @@
                                                             $pagenum = $_POST['pagenum'];
                                                         }
 
-                                                        $sql = "SELECT * FROM `resources`;";
-
-                                                        $result_of_query = $db_connection->query($sql);
-                                                        $rows = mysqli_num_rows($result_of_query); 
-
-                                                        $last = ceil($rows/$page_rows); 
-
-                                                        if ($pagenum < 1) 
-                                                        { 
-                                                            $pagenum = 1; 
-                                                        } 
-                                                        elseif ($pagenum > $last) 
-                                                        { 
-                                                            $pagenum = $last; 
-                                                        } 
-
-                                                        $max = 'limit ' .($pagenum - 1) * $page_rows .',' .$page_rows;
-
-                                                        $sql = "SELECT * FROM `resources` ORDER BY `resource` ASC ".$max." ;";
+                                                        $sql = "SELECT * FROM `stocksys` WHERE `ID`='1';";
                                                         
                                                         $result_of_query = $db_connection->query($sql);
                                                         
                                                         while($row = mysqli_fetch_assoc($result_of_query)) 
                                                         {
-                                                            echo "<tr>";
-                                                                echo "<td>".$row["resource"]."</td>";
-                                                                echo "<td>".$row["price"]."</td>";
-                                                                echo "<td>".$row["selltimes"]."</td>";
-                                                            echo "</tr>";
+                                                            echo "<tr><td>oilp</td><td>".$row["oilp"]."</td></tr>";
+                                                                echo "<tr><td>diamondc</td><td>".$row["diamondc"]."</td></tr>";
+                                                                echo "<tr><td>diamantring</td><td>".$row["diamantring"]."</td></tr>";
+                                                                echo "<tr><td>iron_r</td><td>".$row["iron_r"]."</td></tr>";
+                                                                echo "<tr><td>froglegs</td><td>".$row["froglegs"]."</td></tr>";
+                                                                echo "<tr><td>glass</td><td>".$row["glass"]."</td></tr>";
+                                                                echo "<tr><td>goldr</td><td>".$row["goldr"]."</td></tr>";
+                                                                echo "<tr><td>kerosin</td><td>".$row["kerosin"]."</td></tr>";
+                                                                echo "<tr><td>salt_r</td><td>".$row["salt_r"]."</td></tr>";
+                                                                echo "<tr><td>coalr</td><td>".$row["coalr"]."</td></tr>";
+                                                                echo "<tr><td>copper_r</td><td>".$row["copper_r"]."</td></tr>";
+                                                                echo "<tr><td>silberarmband</td><td>".$row["silberarmband"]."</td></tr>";
+                                                                echo "<tr><td>silverr</td><td>".$row["silverr"]."</td></tr>";
+                                                                echo "<tr><td>steel</td><td>".$row["steel"]."</td></tr>";
+                                                                echo "<tr><td>cement</td><td>".$row["cement"]."</td></tr>";
+                                                                echo "<tr><td>goldbar</td><td>".$row["goldbar"]."</td></tr>";
+                                                                echo "<tr><td>bluekbsmeth</td><td>".$row["bluekbsmeth"]."</td></tr>";
+                                                                echo "<tr><td>heroinp</td><td>".$row["heroinp"]."</td></tr>";
+                                                                echo "<tr><td>cocainep</td><td>".$row["cocainep"]."</td></tr>";
+                                                                echo "<tr><td>froglsd</td><td>".$row["froglsd"]."</td></tr>";
+                                                                echo "<tr><td>marijuana</td><td>".$row["marijuana"]."</td></tr>";
+                                                                echo "<tr><td>turtle</td><td>".$row["turtle"]."</td></tr>";
+                                                                echo "<tr><td>uranp2</td><td>".$row["uranp2"]."</td></tr>";
                                                         };
                                                         echo "</tbody></table>";
                                                         echo "<table><thead>";
                                                         echo "<br>";
-                                                        if ($pagenum == 1){} 
-                                                        else 
-                                                        {
-                                                            echo "<th><form method='post' action='".$_SERVER['PHP_SELF']."' name='pagenum'>";
-                                                            echo "<input id='pagenum' type='hidden' name='pagenum' value='1'>";
-                                                            echo "<input type='submit' value=' <<-First  '>";
-                                                            echo "</form></th>";
-                                                            $previous = $pagenum-1;
-                                                            echo "<th><form style='float:right;' method='post' action='".$_SERVER['PHP_SELF']."' name='pagenum'>";
-                                                            echo "<input id='pagenum' type='hidden' name='pagenum' value='".$previous."'>";
-                                                            echo "<input type='submit' value=' <-Previous  '>";
-                                                            echo "</form></th>";
-                                                        } 
-                                                        //This does the same as above, only checking if we are on the last page, and then generating the Next and Last links
-                                                        if ($pagenum == $last) {} 
-                                                        else 
-                                                        {
-                                                            $next = $pagenum+1;
-                                                            echo "<th><form method='post' action='".$_SERVER['PHP_SELF']."' name='pagenum'>";
-                                                            echo "<input id='pagenum' type='hidden' name='pagenum' value='".$next."'>";
-                                                            echo "<input type='submit' value=' Next ->  '>";
-                                                            echo "</form></th>";
-                                                            echo " ";
-                                                            echo "<th><form method='post' action='".$_SERVER['PHP_SELF']."' name='pagenum'>";
-                                                            echo "<input id='pagenum' type='hidden' name='pagenum' value='".$last."'>";
-                                                            echo "<input type='submit' value=' Last ->>  '>";
-                                                            echo "</form></th>";
-                                                        } 
-                                                        echo "</thead></table>";
+                                                        
                                                     } 
                                                     else 
                                                     {
