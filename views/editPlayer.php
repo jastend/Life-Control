@@ -220,7 +220,7 @@
                                     <?php
                                         if($_SESSION['user_level'] >= '2')
                                         {
-                                            echo "<input id='playerId' type='hidden' name='playerId' value='".$playersID."'>";   
+                                            echo "<input id='playerId' type='hidden' name='playerId' value='".$pId."'>";   
                                             echo "<input class='btn btn-lg btn-primary'  type='submit'  name='edit' value='Update Profile'>";
                                         };
                                     ?>
@@ -624,9 +624,9 @@
                                                             </thead>
                                                             <tbody>
                                                                 <?php echo "<tr><td>cannabis</td><td><input id='skills_cannabis' name='skills_cannabis' value='".$row["cannabis"]."'></textarea></td></tr>"; ?>
-                                                                <?php echo "<tr><td>cocaine</td><td><input id='skills_cocaine' name='skills_cocaine' value='".$row["cocaine"]."'></textarea></td></tr>"; ?>
-                                                                <?php echo "<tr><td>heroinu</td><td><input id='skills_heroinu' name='skills_heroinu' value='".$row["heroinu"]."'></textarea></td></tr>"; ?>
-                                                                <?php echo "<tr><td>Bluemeth</td><td><input id='skills_diebstahl' name='skills_diebstahl' value='".$row["diebstahl"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Cocaine</td><td><input id='skills_cocaine' name='skills_cocaine' value='".$row["cocaine"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Heroin</td><td><input id='skills_heroinu' name='skills_heroinu' value='".$row["heroinu"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Theft (Bluemeth)</td><td><input id='skills_diebstahl' name='skills_diebstahl' value='".$row["diebstahl"]."'></textarea></td></tr>"; ?>
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -650,7 +650,7 @@
                             <?php
                                 if($_SESSION['user_level'] >= '2')
                                 {
-                                    echo "<input id='playerId' type='hidden' name='playerId' value='".$playersID."'>";   
+                                    echo "<input id='playerId' type='hidden' name='playerId' value='".$pId."'>";   
                                     echo "<input class='btn btn-lg btn-primary'  type='submit'  name='edit' value='Submit Changes'>";
                                 } else {
                                     echo "Your permission level is insufficient to submit these changes.";
