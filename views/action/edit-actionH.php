@@ -2,9 +2,9 @@
 	// create a database connection, using the constants from config/db.php (which we loaded in index.php)
 	$db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-	if (isset($_POST["hID"]))
+	if (isset($_POST["hId"]))
 	{
-		$hID   = $_POST["hID"];
+		$hId   = $_POST["hId"];
 		$hOwn = $_POST["hOwn"];
 		$hPos = $_POST["hPos"];
 		$hOwned = $_POST["hOwned"];
@@ -25,11 +25,11 @@
 	{
 		if (isset($_POST['drop'])) 
 		{
-			$sql = "DELETE FROM `houses` WHERE `houses`.`id` = '".$hID."'";
+			$sql = "DELETE FROM `houses` WHERE `houses`.`id` = '".$hId."'";
 		} 
 		else 
 		{
-			$sql = "UPDATE `houses` SET `pid`='".$hOwn."',`pos`='".$hPos."',`owned`='".$hOwned."',`inventory`='".$hInv."',`containers`='".$hCont."' WHERE `houses`.`id` = '".$hID."'";
+			$sql = "UPDATE `houses` SET `pid`='".$hOwn."',`pos`='".$hPos."',`owned`='".$hOwned."',`inventory`='".$hInv."',`containers`='".$hCont."' WHERE `houses`.`id` = '".$hId."'";
 		}		
 
 		$result_of_query = $db_connection->query($sql);
@@ -40,5 +40,5 @@
 		$this->errors[] = "Database connection problem.";
 	}
 	
-	header('Location: index.php');	
+	header('Location: editHouse.php?hId='.$hId.'');	
 ?>

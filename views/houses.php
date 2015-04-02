@@ -141,12 +141,12 @@
                                                 }
                                                 else
                                                 {
-                                                    $sql = "SELECT * FROM `houses` ".$max." ;";
+                                                    $sql = "SELECT * FROM `houses` ORDER BY `pos` ".$max.";";
                                                 }
                                                 $result_of_query = $db_connection->query($sql);
                                                 while($row = mysqli_fetch_assoc($result_of_query)) 
                                                 {
-                                                    $hID = $row["id"];
+                                                    $hId = $row["id"];
                                                     echo "<tr>";
                                                         echo "<td>".$row["pid"]."</td>";
                                                         if($_SESSION['user_level'] >= '3') {
@@ -154,9 +154,7 @@
                                                         };
                                                         echo "<td>".$row["owned"]."</td>";
                                                         echo "<td><form method='post' action='editHouse.php' name='PlayerEdit'>";
-                                                        echo "<input id='hID' type='hidden' name='hID' value='".$hID."'>";
-                                                        echo "<input class='btn btn-sm btn-primary'  type='submit'  name='edit' value='Edit House'>";
-                                                        echo "</form></td>";
+                                                        echo "<td><a href='/editHouse.php?hId=".$hId."'><div class='btn btn-sm btn-primary'>Edit House</div></a></td>";
                                                     echo "</tr>";
                                                 };
                                                 echo "</tbody></table>";

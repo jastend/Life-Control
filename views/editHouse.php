@@ -2,13 +2,17 @@
 	// create a database connection, using the constants from config/db.php (which we loaded in index.php)
 	$db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-	if (isset($_POST["hID"]))
+	if (isset($_GET["hId"]))
 	{
-		$hID = $_POST["hID"];
+        $hId = $_GET["hId"];
+	}
+    else if (isset($_POST["hId"]))
+	{
+		$hId = $_POST["hId"];
 	}
 	else
 	{
-		echo "<center><h1 style='color:red'>VEHID NOT SET</h1></center>";
+		echo "<center><h1 style='color:red'>hId NOT SET</h1></center>";
 	}
 
 	// change character set to utf8 and check it
@@ -88,7 +92,7 @@
                                             <?php
                                                 if (!$db_connection->connect_errno) 
                                                 {
-                                                    $sql = 'SELECT * FROM `houses` WHERE `id` ="'.$hID.'";';
+                                                    $sql = 'SELECT * FROM `houses` WHERE `id` ="'.$hId.'";';
                                                     $result_of_query = $db_connection->query($sql);
                                                     if ($result_of_query->num_rows > 0)
                                                     {
@@ -135,9 +139,13 @@
                             <div class="col-md-4">
                                         <center>
                                             <?php
-                                                echo "<input id='hID' type='hidden' name='hID' value='".$row["id"]."'>";
-                                                echo "<input class='btn btn-lg btn-primary'  type='submit'  name='update' value='Submit Changes'>  ";
-                                                echo "<input class='btn btn-lg btn-danger'  type='submit'  name='drop' value='DELETE'>";
+                                                if($_SESSION['user_level'] >= '3') {
+                                                    echo "<input id='hId' type='hidden' name='hId' value='".$row["id"]."'>";
+                                                    echo "<input class='btn btn-lg btn-primary'  type='submit'  name='update' value='Submit Changes'>  ";
+                                                    echo "<input class='btn btn-lg btn-danger'  type='submit'  name='drop' value='DELETE'>";
+                                                } else {
+                                                    echo "Your permission level is insufficient to submit these changes.";
+                                                };
                                             ?>
                                             <br/>
                                         </center>

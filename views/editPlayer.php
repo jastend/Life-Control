@@ -8,7 +8,7 @@
 		$pId = $_GET["playerId"];	
         $playersID = $_GET["playerId"];
 	}
-    if (isset($_GET["pId"]))
+    else if (isset($_GET["pId"]))
 	{
 		$pId = $_GET["pId"];	
         $playersID = $_GET["pId"];
@@ -453,13 +453,13 @@
                                                         $return = md5('BE' . $temp);
                                                         $pGID = $return;
 
-                                                        $hID = $row["id"];
+                                                        $hId = $row["id"];
                                                         echo "<tr>";
                                                             if($_SESSION['user_level'] >= '3') {
                                                                 echo "<td>".$row["pos"]."</td>";
                                                             };
                                                             echo "<td><form method='post' action='editHouse.php' name='PlayerEdit'>";
-                                                            echo "<input id='hID' type='hidden' name='hID' value='".$hID."'>";
+                                                            echo "<input id='hId' type='hidden' name='hId' value='".$hId."'>";
                                                             echo "<input class='btn btn-sm btn-primary'  type='submit'  name='editH' value='Edit House'>";
                                                             echo "</form></td>";
                                                         echo "</tr>";
