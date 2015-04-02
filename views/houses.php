@@ -153,7 +153,6 @@
                                                             echo "<td>".$row["pos"]."</td>";
                                                         };
                                                         echo "<td>".$row["owned"]."</td>";
-                                                        echo "<td><form method='post' action='editHouse.php' name='PlayerEdit'>";
                                                         echo "<td><a href='/editHouse.php?hId=".$hId."'><div class='btn btn-sm btn-primary'>Edit House</div></a></td>";
                                                     echo "</tr>";
                                                 };
