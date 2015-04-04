@@ -54,9 +54,6 @@
                         <a href="players.php"><i class="fa fa-fw fa-child "></i> Players</a>
                     </li>
                     <li>
-                        <a href="prices.php"><i class="fa fa-fw fa-money"></i> Prices</a>
-                    </li>
-                    <li>
                         <a href="gangs.php"><i class="fa fa-fw fa-sitemap"></i> Gangs</a>
                     </li>
                     <?php
@@ -69,6 +66,13 @@
                             </li>
                             <li>
                                 <a href="vehicles.php"><i class="fa fa-fw fa-car"></i> Vehicles</a>
+                            </li>
+                        <?php };
+                    ?>
+                    <?php
+                        if ($_SESSION['user_level'] >= 3) { ?>
+                            <li>
+                                <a href="prices.php"><i class="fa fa-fw fa-money"></i> Stocklist</a>
                             </li>
                         <?php };
                     ?>
