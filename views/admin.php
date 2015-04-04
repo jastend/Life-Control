@@ -104,7 +104,7 @@
 													$pagenum = $_POST['pagenum'];
 												}
 
-												$sql = "SELECT * FROM `users`;";
+												$sql = "SELECT * FROM `lc_users`;";
 
 												$result_of_query = $db_connection->query($sql);
 												$rows = mysqli_num_rows($result_of_query); 
@@ -125,11 +125,11 @@
 												if (isset($_POST['searchText']))
 												{
 													$searchText = $_POST['searchText'];
-													$sql = "SELECT * FROM `users` WHERE `user_name` LIKE '%".$searchText."%' ".$max." ;";												
+													$sql = "SELECT * FROM `lc_users` WHERE `user_name` LIKE '%".$searchText."%' ".$max." ;";												
 												}
 												else
 												{
-													$sql = "SELECT * FROM `users` ".$max.";";
+													$sql = "SELECT * FROM `lc_users` ".$max.";";
 												}
 												
 												$result_of_query = $db_connection->query($sql);

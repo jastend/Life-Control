@@ -87,7 +87,7 @@
 									<?php
 										if (!$db_connection->connect_errno) 
 										{
-											$sql = 'SELECT * FROM `users` WHERE `user_id` ="'.$uId.'";';
+											$sql = 'SELECT * FROM `lc_users` WHERE `user_id` ="'.$uId.'";';
 											$result_of_query = $db_connection->query($sql);
 											if ($result_of_query->num_rows > 0)
 											{

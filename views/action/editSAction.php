@@ -23,7 +23,7 @@
 
 	if (!$db_connection->connect_errno) 
 	{
-		$sql = "UPDATE `users` SET `user_name`='".$staffName."',`user_email`='".$staffEmail."',`playerid`='".$staffPID."',`user_level`='".$staffRank."' WHERE `user_id` ='".$uId."';";											
+		$sql = "UPDATE `lc_users` SET `user_name`='".$staffName."',`user_email`='".$staffEmail."',`playerid`='".$staffPID."',`user_level`='".$staffRank."' WHERE `user_id` ='".$uId."';";											
 		$result_of_query = $db_connection->query($sql);
 	}
 	else 

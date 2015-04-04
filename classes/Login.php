@@ -68,7 +68,7 @@ class Login
                 // database query, getting all the info of the selected user (allows login via email address in the
                 // username field)
                 $sql = "SELECT user_name, user_email, user_level, user_password_hash
-                        FROM users
+                        FROM lc_users
                         WHERE user_name = '" . $user_name . "' OR user_email = '" . $user_name . "';";
                 $result_of_login_check = $this->db_connection->query($sql);
 

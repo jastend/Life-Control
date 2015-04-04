@@ -82,15 +82,15 @@
 												{
 													$email = $_POST['email'];
 													
-													$update = "UPDATE `users` SET `user_email`= '".$email."' WHERE `user_name` = '".$_SESSION['user_name']."' ";
+													$update = "UPDATE `lc_users` SET `user_email`= '".$email."' WHERE `user_name` = '".$_SESSION['user_name']."' ";
 													$result_of_query = $db_connection->query($update);
-													$sql = "SELECT * FROM `users` WHERE `user_name` ='".$_SESSION['user_name']."' ;";													
+													$sql = "SELECT * FROM `lc_users` WHERE `user_name` ='".$_SESSION['user_name']."' ;";													
 												}
 												else
 												{
-													$sql = "SELECT * FROM `users` WHERE `user_name` ='".$_SESSION['user_name']."' ;";
+													$sql = "SELECT * FROM `lc_users` WHERE `user_name` ='".$_SESSION['user_name']."' ;";
 												}
-												$sql = "SELECT * FROM `users` WHERE `user_name` ='".$_SESSION['user_name']."' ;";
+												$sql = "SELECT * FROM `lc_users` WHERE `user_name` ='".$_SESSION['user_name']."' ;";
 												$result_of_query = $db_connection->query($sql);
 												while($row = mysqli_fetch_assoc($result_of_query)) 
 												{
