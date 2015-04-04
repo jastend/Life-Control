@@ -172,39 +172,41 @@
                                                     echo "</select>";
                                                     echo "<h4>Admin: ";
                                                     echo "<select id='player_adminlvl' name='player_adminlvl'>";
-                                                        echo '<option value="0"';
-                                                            if($row['adminlevel']==0){echo ' selected';}
-                                                        echo '>0</option>';	
-                                                        echo '<option value="1"';
-                                                            if($row['adminlevel']==1){echo ' selected';}
-                                                        echo '>1</option>';	
-                                                        echo '<option value="2"';
-                                                            if($row['adminlevel']==2){echo ' selected';}
-                                                        echo '>2</option>';
-                                                        echo '<option value="3"';
-                                                            if($row['adminlevel']==3){echo ' selected';}
-                                                        echo '>3</option>';
+                                                        if($_SESSION['user_level'] >= '3') {
+                                                            echo '<option value="0"';
+                                                                if($row['adminlevel']==0){echo ' selected';}
+                                                            echo '>0</option>';	
+                                                            echo '<option value="1"';
+                                                                if($row['adminlevel']==1){echo ' selected';}
+                                                            echo '>1</option>';	
+                                                            echo '<option value="2"';
+                                                                if($row['adminlevel']==2){echo ' selected';}
+                                                            echo '>2</option>';
+                                                            echo '<option value="3"';
+                                                                if($row['adminlevel']==3){echo ' selected';}
+                                                            echo '>3</option>';
+                                                        } else {
+                                                            echo '<option value="'.$row['adminlevel'].'" '.$row['adminlevel'].'>'.$row['adminlevel'].'</option>';
+                                                        };
                                                     echo "</select>";
                                                     echo "<h4>Donator: ";
                                                     echo "<select id='player_donlvl' name='player_donlvl'>";
-                                                        echo '<option value="0"';
-                                                            if($row['donatorlvl']==0){echo ' selected';}
-                                                        echo '>0</option>';	
-                                                        echo '<option value="1"';
-                                                            if($row['donatorlvl']==1){echo ' selected';}
-                                                        echo '>1</option>';	
-                                                        echo '<option value="2"';
-                                                            if($row['donatorlvl']==2){echo ' selected';}
-                                                        echo '>2</option>';
-                                                        echo '<option value="3"';
-                                                            if($row['donatorlvl']==3){echo ' selected';}
-                                                        echo '>3</option>';
-                                                        echo '<option value="4"';
-                                                            if($row['donatorlvl']==4){echo ' selected';}
-                                                        echo '>4</option>';
-                                                        echo '<option value="5"';
-                                                            if($row['donatorlvl']==5){echo ' selected';}
-                                                        echo '>5</option>';
+                                                        if($_SESSION['user_level'] >= '3') {
+                                                            echo '<option value="0"';
+                                                                if($row['donatorlvl']==0){echo ' selected';}
+                                                            echo '>0</option>';	
+                                                            echo '<option value="1"';
+                                                                if($row['donatorlvl']==1){echo ' selected';}
+                                                            echo '>1</option>';	
+                                                            echo '<option value="2"';
+                                                                if($row['donatorlvl']==2){echo ' selected';}
+                                                            echo '>2</option>';
+                                                            echo '<option value="3"';
+                                                                if($row['donatorlvl']==3){echo ' selected';}
+                                                            echo '>3</option>';
+                                                        } else {
+                                                            echo '<option value="'.$row['donatorlvl'].'" '.$row['donatorlvl'].'>'.$row['donatorlvl'].'</option>';
+                                                        };
                                                     echo "</select>";
                                                 echo "</center>";
                                 ?>
@@ -350,19 +352,13 @@
                                                             echo "<td>".$row["active"]."</td>";
                                                             if($_SESSION['user_level'] == '1') {
                                                                 if ($row["alive"] == '1' && $row["active"] == '0') {
-                                                                    echo "";
+                                                                    echo "<td></td>";
                                                                 }
                                                                 else {
-                                                                    echo "<td><form method='post' action='editVeh.php' name='PlayerEdit'>";
-                                                                    echo "<input id='vehID' type='hidden' name='vehID' value='".$vehID."'>";
-                                                                    echo "<input class='btn btn-sm btn-primary'  type='submit'  name='editVeh' value='Edit Vehicle'>";
-                                                                    echo "</form></td>";
+                                                                    echo "<td><a href='/editVeh.php?vId=".$vehID."'><div class='btn btn-sm btn-primary'>Edit Vehicle</div></a></td>";
                                                                 };
                                                             } else {                                        
-                                                            echo "<td><form method='post' action='editVeh.php' name='PlayerEdit'>";
-                                                            echo "<input id='vehID' type='hidden' name='vehID' value='".$vehID."'>";
-                                                            echo "<input class='btn btn-sm btn-primary'  type='submit'  name='editVeh' value='Edit Vehicle'>";
-                                                            echo "</form></td>";
+                                                                echo "<td><a href='/editVeh.php?vId=".$vehID."'><div class='btn btn-sm btn-primary'>Edit Vehicle</div></a></td>";
                                                             };
                                                         echo "</tr>";
                                                     };
