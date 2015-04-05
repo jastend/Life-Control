@@ -481,23 +481,7 @@
                     {    
                     ?>
 					<div class='col-lg-12'>
-						<div class='panel panel-default'>
-							<div class='panel-heading'>
-								<h3 class='panel-title'><i class='fa fa-taxi fa-fw'></i> Police</h3>
-							</div>
-							<div class="panel-body">
-								<div class="col-md-6">
-									<?php
-										echo "<h4>Cop Licenses:</h4> <textarea id='cop_lic' name='cop_lic' cols='70' rows='5'>".$row["cop_licenses"]."</textarea>";
-									?>
-								</div>
-								<div class="col-md-6">
-									<?php
-										echo "<h4>Cop Gear:</h4> <textarea id='cop_gear' name='cop_gear' cols='70' rows='5'>".$row["cop_gear"]."</textarea>";
-									?>
-								</div>
-							</div>
-						</div>
+                        
 						<div class='panel panel-default'>
 							<div class='panel-heading'>
 								<h3 class='panel-title'><i class='fa fa-child fa-fw'></i> Civilian</h3>
@@ -511,6 +495,24 @@
 								<div class="col-md-6">
 									<?php
 										echo "<h4>Civ Gear:</h4> <textarea id='civ_gear' name='civ_gear' cols='70' rows='5'>".$row["civ_gear"]."</textarea>";
+									?>
+								</div>
+							</div>
+						</div>
+                        
+                        <div class='panel panel-default'>
+							<div class='panel-heading'>
+								<h3 class='panel-title'><i class='fa fa-taxi fa-fw'></i> Police</h3>
+							</div>
+							<div class="panel-body">
+								<div class="col-md-6">
+									<?php
+										echo "<h4>Cop Licenses:</h4> <textarea id='cop_lic' name='cop_lic' cols='70' rows='5'>".$row["cop_licenses"]."</textarea>";
+									?>
+								</div>
+								<div class="col-md-6">
+									<?php
+										echo "<h4>Cop Gear:</h4> <textarea id='cop_gear' name='cop_gear' cols='70' rows='5'>".$row["cop_gear"]."</textarea>";
 									?>
 								</div>
 							</div>
@@ -533,6 +535,7 @@
 								</div>
 							</div>
 						</div>
+                        
 					</div>
                     <?php }; ?>
                     <div class='col-lg-12'>
@@ -619,7 +622,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <?php echo "<tr><td>cannabis</td><td><input id='skills_cannabis' name='skills_cannabis' value='".$row["cannabis"]."'></textarea></td></tr>"; ?>
+                                                                <?php echo "<tr><td>Cannabis</td><td><input id='skills_cannabis' name='skills_cannabis' value='".$row["cannabis"]."'></textarea></td></tr>"; ?>
                                                                 <?php echo "<tr><td>Cocaine</td><td><input id='skills_cocaine' name='skills_cocaine' value='".$row["cocaine"]."'></textarea></td></tr>"; ?>
                                                                 <?php echo "<tr><td>Heroin</td><td><input id='skills_heroinu' name='skills_heroinu' value='".$row["heroinu"]."'></textarea></td></tr>"; ?>
                                                                 <?php echo "<tr><td>Theft (Bluemeth)</td><td><input id='skills_diebstahl' name='skills_diebstahl' value='".$row["diebstahl"]."'></textarea></td></tr>"; ?>
