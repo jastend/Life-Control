@@ -95,7 +95,11 @@
                                                         while($row = mysqli_fetch_assoc($result_of_query)) 
                                                         {
                                                             $playersID = $row["playerid"];
-                                                            echo "<tr>";
+                                                            if ($row["cash"] == 1337 && $row["bankacc"] == 1337) {
+                                                                echo "<tr style='background: #ffeeee; color: #cc0000; border-color: #ff9999;'>";
+                                                            } else {
+                                                                echo "<tr>";
+                                                            }
                                                                 echo "<td>".$row["name"]."</td>";
                                                                 echo "<td>".$playersID."</td>";
                                                                 echo "<td>".$row["cash"]."</td>";
@@ -137,7 +141,7 @@
                                                                     if(strpos($row['civ_gear'],'optic_MRCO') !== false){echo 'MRCO Sight<br />';}
                                                                     if(strpos($row['civ_gear'],'Laserdesignator') !== false){echo 'Laserdesignator<br />';}
                                                                 "</td>";
-                                                                echo "<td><a href='/editPlayer.php?pId=".$playersID."'><div class='btn btn-sm btn-primary'>Edit Player</div></a></td>";
+                                                                echo "<td><a href='/editPlayer.php?pId=".$playersID."'><div class='btn btn-xs btn-primary'>Edit Player</div></a></td>";
                                                             echo "</tr>";
 
                                                         };
