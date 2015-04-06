@@ -255,6 +255,12 @@
                                                     echo "<h4>GUID: ".$pGID."</h4>";                        
                                                     echo "<h4>Cash:    <input id='player_cash' name='player_cash' type='text' value='".$row["cash"]."'></td><br/>";
                                                     echo "<h4>Bank:    <input id='player_bank' name='player_bank' type='text' value='".$row["bankacc"]."'></td><br/>";
+                                                    if ($_SESSION['user_level'] >= 2) {
+                                                        echo "<h4>Jail time:    <input id='jail_time' name='jail_time' type='text' value='".$row["jail_time"]."'></td><br/>";
+                                                    } else {
+                                                        echo "<input id='jail_time' name='jail_time' type='hidden' value='".$row["jail_time"]."'></td><br/>";
+                                                        echo "<h4>Jail time:    ".$row["jail_time"]."</td><br/>";
+                                                    };
                                                     echo "<h4>Cop: ";
                                                     echo "<select id='player_coplvl' name='player_coplvl'>";
                                                         echo '<option value="0"';

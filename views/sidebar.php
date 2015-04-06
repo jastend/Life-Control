@@ -47,48 +47,36 @@
                     <li>
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
+                    <li style="margin-top: 20px;">
+                        <a href="notes.php"><i class="fa fa-fw fa-bell"></i> Admin Notes</a>
+                    </li>
+                    <?php if ($_SESSION['user_level'] >= 2) { ?>
+                        <li>
+                            <a href="messages.php"><i class="fa fa-fw fa-envelope-o"></i> Messages</a>
+                        </li>
+                    <?php }; ?>
                     <li>
                         <a href="newplayercheck.php"><i class="fa fa-fw fa-bullseye"></i> New Player Check</a>
                     </li>
-                    <li>
-                        <a href="players.php"><i class="fa fa-fw fa-child "></i> Players</a>
-                    </li>
-                    <li>
-                        <a href="gangs.php"><i class="fa fa-fw fa-sitemap"></i> Gangs</a>
-                    </li>
-                    <li>
-                        <a href="notes.php"><i class="fa fa-fw fa-bell"></i> Admin Notes</a>
-                    </li>
-                    <?php
-                        if ($_SESSION['user_level'] >= 2) { ?>
-                            <li>
-                                <a href="houses.php"><i class="fa fa-fw fa-home"></i> Houses</a>
-                            </li>
-                            <li>
-                                <a href="messages.php"><i class="fa fa-fw fa-envelope-o"></i> Messages</a>
-                            </li>
-                            <li>
-                                <a href="vehicles.php"><i class="fa fa-fw fa-car"></i> Vehicles</a>
-                            </li>
-                        <?php };
-                    ?>
-                    <?php
-                        if ($_SESSION['user_level'] >= 3) { ?>
+                    <?php if ($_SESSION['user_level'] >= 3) { ?>
                             <li>
                                 <a href="prices.php"><i class="fa fa-fw fa-money"></i> Stocklist</a>
                             </li>
-                        <?php };
-                    ?>
-                    <?php
-                    if (alits_life_4 == TRUE)
-					{
-					?>
-							   <li>
-									<a href="wanted.php"><i class="fa fa-fw fa-list-ul"></i> Wanted</a>
-								</li>
-					<?php								
-					}
-                    ?>
+                    <?php }; ?>
+                    <li  style="margin-top: 20px;">
+                        <a href="players.php"><i class="fa fa-fw fa-child "></i> Players</a>
+                    </li>
+                    <?php if ($_SESSION['user_level'] >= 2) { ?>
+                        <li>
+                            <a href="vehicles.php"><i class="fa fa-fw fa-car"></i> Vehicles</a>
+                        </li>
+                        <li>
+                            <a href="houses.php"><i class="fa fa-fw fa-home"></i> Houses</a>
+                        </li>
+                    <?php }; ?>
+                    <li>
+                        <a href="gangs.php"><i class="fa fa-fw fa-sitemap"></i> Gangs</a>
+                    </li>     
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

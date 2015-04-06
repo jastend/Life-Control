@@ -7,6 +7,7 @@
 		$pId   = $_POST["playerId"];
 		$pCash = $_POST["player_cash"];
 		$pBank = $_POST["player_bank"];
+        $pJailTime = $_POST["jail_time"];
 		$pCopLvl = $_POST["player_coplvl"];
 		$pMedLvl = $_POST["player_medlvl"];
 		$pAdminLvl = $_POST["player_adminlvl"];
@@ -49,7 +50,7 @@
         else
         {
 		
-		$sql = "UPDATE `players` SET `cash`='".$pCash."',`bankacc`='".$pBank."',`coplevel`='".$pCopLvl."',`mediclevel`='".$pMedLvl."',`adminlevel`='".$pAdminLvl."',`donatorlvl`='".$pDonLvl."' WHERE `playerid` = '".$pId."'";
+		$sql = "UPDATE `players` SET `cash`='".$pCash."',`bankacc`='".$pBank."',  `jail_time`='".$pJailTime."',`coplevel`='".$pCopLvl."',`mediclevel`='".$pMedLvl."',`adminlevel`='".$pAdminLvl."',`donatorlvl`='".$pDonLvl."' WHERE `playerid` = '".$pId."'";
             
         $result_of_query = $db_connection->query($sql);
             
