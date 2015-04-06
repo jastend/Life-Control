@@ -102,127 +102,130 @@
                 <!-- /.row -->
                 
                 <div class='col-lg-12'>
-                        
-						<div class='panel panel-default'>
-							<div class='panel-heading'>
-								<h3 class='panel-title'><i class='fa fa-bell fa-fw'></i> Notes</h3>
-							</div>
-							<div class="panel-body">
-								<div class="col-md-12">
-									<div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Admin</th>
-                                            <th>Time</th>
-                                            <th>Note</th>
-                                            <th>Edit</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                            if (!$db_connection->connect_errno) 
-                                            {
-                                                if (!(isset($_POST['pagenum']))) 
-                                                    { 
-                                                        $pagenum = 1; 
-                                                    }
-                                                    else
-                                                    {
-                                                        $pagenum = $_POST['pagenum'];
-                                                    }
-
-                                                    $sql = "SELECT * FROM `lc_notes`;";
-
-                                                    $result_of_query = $db_connection->query($sql);
-                                                    $rows = mysqli_num_rows($result_of_query); 
-
-                                                    $last = ceil($rows/$page_rows_notes); 
-
-                                                    if ($pagenum < 1) 
-                                                    { 
-                                                        $pagenum = 1; 
-                                                    } 
-                                                    elseif ($pagenum > $last) 
-                                                    { 
-                                                        $pagenum = $last; 
-                                                    }
-
-                                                    $max = 'limit ' .($pagenum - 1) * $page_rows_notes .',' .$page_rows_notes;
-                                                
-                                                    $sql = "SELECT * FROM `lc_notes` WHERE `playerid` = '".$pId."' ORDER BY `time` DESC ".$max." ;";
-                                                    $result_of_query = $db_connection->query($sql);
-                                                    while($row = mysqli_fetch_assoc($result_of_query)) 
-                                                    {
-                                                        echo "<tr>";
-                                                            echo "<td>".$row["admin"]."</td>";
-                                                            echo "<td>".$row["time"]."</td>";
-                                                            echo "<td>".$row["note"]."</td>";
-                                                            echo "<td><a href='/editNote.php?nId=".$row["id"]."'><div class='btn btn-sm btn-primary'>Edit Note</div></a></td>";
-                                                        echo "</tr>";
-                                                    };
-                                                } 
-                                                else 
+                    
+                    <div class='panel panel-default'>
+                        <div class='panel-heading'>
+                            <h3 class='panel-title'><i class='fa fa-bell fa-fw'></i> Notes</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <?php
+                                $sql = "SELECT * FROM `lc_notes` WHERE `playerid` = '".$pId."';";
+                                $result_of_query = $db_connection->query($sql);
+                                if ($result_of_query->num_rows > 0) {
+                                ?>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Admin</th>
+                                                    <th>Time</th>
+                                                    <th>Note</th>
+                                                    <th>Edit</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                if (!$db_connection->connect_errno) 
                                                 {
-                                                    $this->errors[] = "Database connection problem.";
-                                                }
-                                                echo "</tbody></table>";
-                                                
-                                                $sql = "SELECT * FROM `lc_notes` WHERE `playerid` = '".$pId."';";
-                                                $result_of_query = $db_connection->query($sql);
-                                                if ($result_of_query->num_rows > $page_rows_notes) {
-                                                
-                                                    echo "<table><thead>";
-                                                    echo "<br>";
-                                                    if ($pagenum == 1){} 
-                                                            else 
-                                                            {
-                                                                echo "<th><form method='post' action='".$_SERVER['PHP_SELF']."?pId=".$pId."' name='pagenum'>";
-                                                                echo "<input id='pagenum' type='hidden' name='pagenum' value='1'>";
-                                                                echo "<input type='submit' value=' <<-First  '>";
-                                                                echo "</form></th>";
-                                                                $previous = $pagenum-1;
-                                                                echo "<th><form style='float:right;' method='post' action='".$_SERVER['PHP_SELF']."?pId=".$pId."' name='pagenum'>";
-                                                                echo "<input id='pagenum' type='hidden' name='pagenum' value='".$previous."'>";
-                                                                echo "<input type='submit' value=' <-Previous  '>";
-                                                                echo "</form></th>";
-                                                            } 
-                                                            //This does the same as above, only checking if we are on the last page, and then generating the Next and Last links
-                                                            if ($pagenum == $last) {} 
-                                                            else 
-                                                            {
-                                                                $next = $pagenum+1;
-                                                                echo "<th><form method='post' action='".$_SERVER['PHP_SELF']."?pId=".$pId."' name='pagenum'>";
-                                                                echo "<input id='pagenum' type='hidden' name='pagenum' value='".$next."'>";
-                                                                echo "<input type='submit' value=' Next ->  '>";
-                                                                echo "</form></th>";
-                                                                echo " ";
-                                                                echo "<th><form method='post' action='".$_SERVER['PHP_SELF']."?pId=".$pId."' name='pagenum'>";
-                                                                echo "<input id='pagenum' type='hidden' name='pagenum' value='".$last."'>";
-                                                                echo "<input type='submit' value=' Last ->>  '>";
-                                                                echo "</form></th>";
-                                                            }
-                                                    echo "</thead></table>";
-                                                    
-                                                };
-                                                ?>
-                                                <form method="post" action="editNote.php" name="editform">
-                                                    <center>
-                                                    <?php
-                                                        echo "<input id='pId' type='hidden' name='pId' value='".$pId."'>"; 
-                                                        echo "<input class='btn btn-lg btn-primary'  type='submit'  name='addNote' value='Add note'>";
+                                                    if (!(isset($_POST['pagenum']))) 
+                                                        { 
+                                                            $pagenum = 1; 
+                                                        }
+                                                        else
+                                                        {
+                                                            $pagenum = $_POST['pagenum'];
+                                                        }
+
+                                                        $sql = "SELECT * FROM `lc_notes`;";
+
+                                                        $result_of_query = $db_connection->query($sql);
+                                                        $rows = mysqli_num_rows($result_of_query); 
+
+                                                        $last = ceil($rows/$page_rows_notes); 
+
+                                                        if ($pagenum < 1) 
+                                                        { 
+                                                            $pagenum = 1; 
+                                                        } 
+                                                        elseif ($pagenum > $last) 
+                                                        { 
+                                                            $pagenum = $last; 
+                                                        }
+
+                                                        $max = 'limit ' .($pagenum - 1) * $page_rows_notes .',' .$page_rows_notes;
+
+                                                        $sql = "SELECT * FROM `lc_notes` WHERE `playerid` = '".$pId."' ORDER BY `time` DESC ".$max." ;";
+                                                        $result_of_query = $db_connection->query($sql);
+                                                        while($row = mysqli_fetch_assoc($result_of_query)) 
+                                                        {
+                                                            echo "<tr>";
+                                                                echo "<td>".$row["admin"]."</td>";
+                                                                echo "<td>".$row["time"]."</td>";
+                                                                echo "<td>".$row["note"]."</td>";
+                                                                echo "<td><a href='/editNote.php?nId=".$row["id"]."'><div class='btn btn-sm btn-primary'>Edit Note</div></a></td>";
+                                                            echo "</tr>";
+                                                        };
+                                                    } 
+                                                    else 
+                                                    {
+                                                        $this->errors[] = "Database connection problem.";
+                                                    }
+                                                    echo "</tbody></table>";
+
+                                                    $sql = "SELECT * FROM `lc_notes` WHERE `playerid` = '".$pId."';";
+                                                    $result_of_query = $db_connection->query($sql);
+                                                    if ($result_of_query->num_rows > $page_rows_notes) {
+
+                                                        echo "<table><thead>";
+                                                        echo "<br>";
+                                                        if ($pagenum == 1){} 
+                                                                else 
+                                                                {
+                                                                    echo "<th><form method='post' action='".$_SERVER['PHP_SELF']."?pId=".$pId."' name='pagenum'>";
+                                                                    echo "<input id='pagenum' type='hidden' name='pagenum' value='1'>";
+                                                                    echo "<input type='submit' value=' <<-First  '>";
+                                                                    echo "</form></th>";
+                                                                    $previous = $pagenum-1;
+                                                                    echo "<th><form style='float:right;' method='post' action='".$_SERVER['PHP_SELF']."?pId=".$pId."' name='pagenum'>";
+                                                                    echo "<input id='pagenum' type='hidden' name='pagenum' value='".$previous."'>";
+                                                                    echo "<input type='submit' value=' <-Previous  '>";
+                                                                    echo "</form></th>";
+                                                                } 
+                                                                //This does the same as above, only checking if we are on the last page, and then generating the Next and Last links
+                                                                if ($pagenum == $last) {} 
+                                                                else 
+                                                                {
+                                                                    $next = $pagenum+1;
+                                                                    echo "<th><form method='post' action='".$_SERVER['PHP_SELF']."?pId=".$pId."' name='pagenum'>";
+                                                                    echo "<input id='pagenum' type='hidden' name='pagenum' value='".$next."'>";
+                                                                    echo "<input type='submit' value=' Next ->  '>";
+                                                                    echo "</form></th>";
+                                                                    echo " ";
+                                                                    echo "<th><form method='post' action='".$_SERVER['PHP_SELF']."?pId=".$pId."' name='pagenum'>";
+                                                                    echo "<input id='pagenum' type='hidden' name='pagenum' value='".$last."'>";
+                                                                    echo "<input type='submit' value=' Last ->>  '>";
+                                                                    echo "</form></th>";
+                                                                }
+                                                        echo "</thead></table>";
+
+                                                    };
                                                     ?>
-                                                    </center>
-                                                </form>
-                                    
-                                
-                            </div>
-								</div>
-								<div class="col-md-6">
-									
-								</div>
+                                                        <form method="post" action="editNote.php" name="editform">
+                                                            <center>
+                                                            <?php
+                                                            echo "<input id='pId' type='hidden' name='pId' value='".$pId."'>"; 
+                                                            echo "<input class='btn btn-lg btn-primary'  type='submit'  name='addNote' value='Add note'>";
+                                                            ?>
+                                                            </center>
+                                                        </form>
+                                                    </tbody>
+                                                </table>                
+                                            </div>
+                                        <?php }; ?>
+                                    </div>
+                                </div>
 							</div>
-						</div>
                     
                 </div>
                 
@@ -370,6 +373,8 @@
                                     <thead>
                                         <tr>
                                             <th>Class</th>
+                                            <th>Side</th>
+                                            <th>Color</th>
                                             <th>Alive</th>
                                             <th>Active</th>
                                             <th>Edit</th>
@@ -475,18 +480,26 @@
                                                             if($row['classname']=='C_supplyCrate_F'){echo 'C_supplyCrate_F';}
                                                             if($row['classname']=='B_Heli_Attack_01_F'){echo 'AH-99 Blackfoot';}
                                                             echo "</td>";
+                                                            echo "<td>".$row["side"]."</td>";
+                                                            echo "<td>".$row["color"]."</td>";
                                                             echo "<td>".$row["alive"]."</td>";
                                                             echo "<td>".$row["active"]."</td>";
-                                                            if($_SESSION['user_level'] == '1') {
-                                                                if ($row["alive"] == '1' && $row["active"] == '0') {
-                                                                    echo "<td></td>";
-                                                                }
-                                                                else {
-                                                                    echo "<td><a href='/editVeh.php?vId=".$vehID."'><div class='btn btn-sm btn-primary'>Edit Vehicle</div></a></td>";
-                                                                };
-                                                            } else {                                        
-                                                                echo "<td><a href='/editVeh.php?vId=".$vehID."'><div class='btn btn-sm btn-primary'>Edit Vehicle</div></a></td>";
-                                                            };
+                                                            ?>
+                                                                <form method="post" action="editPlayer-actionVehicle.php" name="editform">
+                                                                    <?php
+                                                                        if ($_SESSION['user_level'] >= '2') {
+                                                                            echo "<td><a href='/editVeh.php?vId=".$vehID."'><div class='btn btn-sm btn-primary'>Edit Vehicle</div></a>";
+                                                                        };
+                                                                        if ($row["alive"] != '1' || $row["active"] != '0') {
+                                                                            echo "<input id='pId' type='hidden' name='pId' value='".$pId."'>";
+                                                                            echo "<input id='vehID' type='hidden' name='vehID' value='".$vehID."'>"; 
+                                                                            echo " <input class='btn btn-sm btn-warning'  type='submit'  name='addNote' value='Fix & Garage'>";
+                                                                        } else {
+                                                                            echo "</td>";
+                                                                        };
+                                                                    ?>
+                                                                </form>
+                                                            <?php
                                                         echo "</tr>";
                                                     };
                                                 } 

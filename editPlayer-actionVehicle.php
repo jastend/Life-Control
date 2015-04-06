@@ -34,11 +34,7 @@ $login = new Login();
 if ($login->isUserLoggedIn() == true) {
     // the user is logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are logged in" view.
-    if ($_SESSION['user_level'] >= '2') {
-        include("views/editVeh.php");
-    } else {
-        include("views/logged_in.php");
-    }
+    include("views/action/editPlayer-actionVehicle.php");
 
 } else {
     // the user is not logged in. you can do whatever you want here.
