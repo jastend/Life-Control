@@ -56,6 +56,9 @@
                     <li>
                         <a href="gangs.php"><i class="fa fa-fw fa-sitemap"></i> Gangs</a>
                     </li>
+                    <li>
+                        <a href="notes.php"><i class="fa fa-fw fa-bell"></i> Admin Notes</a>
+                    </li>
                     <?php
                         if ($_SESSION['user_level'] >= 2) { ?>
                             <li>
