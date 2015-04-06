@@ -210,19 +210,19 @@
                                                         echo "</thead></table>";
 
                                                     };
-                                                    ?>
-                                                        <form method="post" action="editNote.php" name="editform">
-                                                            <center>
-                                                            <?php
-                                                            echo "<input id='pId' type='hidden' name='pId' value='".$pId."'>"; 
-                                                            echo "<input class='btn btn-lg btn-primary'  type='submit'  name='addNote' value='Add note'>";
-                                                            ?>
-                                                            </center>
-                                                        </form>
+                                                    ?>                    
                                                     </tbody>
                                                 </table>                
                                             </div>
                                         <?php }; ?>
+                                        <form method="post" action="editNote.php" name="editform">
+                                            <center>
+                                                <?php
+                                                echo "<input id='pId' type='hidden' name='pId' value='".$pId."'>";
+                                                echo "<input class='btn btn-sn btn-primary'  type='submit'  name='addNote' value='Add note'>";
+                                                ?>
+                                            </center>
+                                        </form>
                                     </div>
                                 </div>
 							</div>
@@ -353,7 +353,8 @@
                                         if($_SESSION['user_level'] >= '2')
                                         {
                                             echo "<input id='playerId' type='hidden' name='playerId' value='".$pId."'>";   
-                                            echo "<input class='btn btn-lg btn-primary'  type='submit'  name='edit' value='Update Profile'>";
+                                            echo "<input class='btn btn-sm btn-primary'  type='submit'  name='edit' value='Update Profile'>";
+                                            echo "<br/><br/><input class='btn btn-sm btn-danger'  type='submit'  name='moneyhack' value='Flag as Money Hacker'>";
                                         };
                                     ?>
                                     <br/>
