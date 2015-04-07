@@ -132,11 +132,11 @@
 
                                                     if (isset($_POST['pos'])) 
                                                     {
-                                                        $sql = "SELECT * FROM `houses` WHERE `pos` LIKE '%".$searchText."%' ".$max." ;";
+                                                        $sql = "SELECT * FROM `houses` WHERE `pos` LIKE '%".$searchText."%';";
                                                     } 
                                                     else 
                                                     {
-                                                        $sql = "SELECT * FROM `houses` WHERE `pid` LIKE '%".$searchText."%' ".$max." ;";
+                                                        $sql = "SELECT * FROM `houses` WHERE `pid` LIKE '%".$searchText."%';";
                                                     }												
                                                 }
                                                 else

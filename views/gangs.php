@@ -129,7 +129,7 @@
 												{
 													$searchText = $_POST['searchText'];
 																								
-													$sql = "SELECT * FROM `gangs` WHERE `name` LIKE '%".$searchText."%' ".$max." ;";
+													$sql = "SELECT * FROM `gangs` WHERE `name` LIKE '%".$searchText."%';";
 																									
 												}
 												else

@@ -493,9 +493,10 @@
                                                             echo "<td>".$row["active"]."</td>";
                                                             ?>
                                                                 <form method="post" action="editPlayer-actionVehicle.php" name="editform">
+                                                                    <td>
                                                                     <?php
                                                                         if ($_SESSION['user_level'] >= '2') {
-                                                                            echo "<td><a href='/editVeh.php?vId=".$vehID."'><div class='btn btn-sm btn-primary'>Edit Vehicle</div></a>";
+                                                                            echo "<a href='/editVeh.php?vId=".$vehID."'><div class='btn btn-sm btn-primary'>Edit Vehicle</div></a>";
                                                                         };
                                                                         if ($row["alive"] != '1' || $row["active"] != '0') {
                                                                             echo "<input id='pId' type='hidden' name='pId' value='".$pId."'>";

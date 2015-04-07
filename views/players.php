@@ -132,11 +132,11 @@
 
                                                 if (isset($_POST['pid'])) 
                                                 {
-                                                    $sql = "SELECT * FROM `players` WHERE `playerid` LIKE '%".$searchText."%' ".$max." ;";
+                                                    $sql = "SELECT * FROM `players` WHERE `playerid` LIKE '%".$searchText."%';";
                                                 } 
                                                 else 
                                                 {
-                                                    $sql = "SELECT * FROM `players` WHERE `name` LIKE '%".$searchText."%' ".$max." ;";
+                                                    $sql = "SELECT * FROM `players` WHERE `name` LIKE '%".$searchText."%';";
                                                 }
                                             }
                                             else
@@ -176,7 +176,7 @@
                                                 echo "</form></th>";
                                             } 
                                             //This does the same as above, only checking if we are on the last page, and then generating the Next and Last links
-                                            if ($pagenum == $last) {} 
+                                            if ($pagenum) {} 
                                             else 
                                             {
                                                 $next = $pagenum+1;

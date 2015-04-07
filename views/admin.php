@@ -125,7 +125,7 @@
 												if (isset($_POST['searchText']))
 												{
 													$searchText = $_POST['searchText'];
-													$sql = "SELECT * FROM `lc_users` WHERE `user_name` LIKE '%".$searchText."%' ".$max." ;";												
+													$sql = "SELECT * FROM `lc_users` WHERE `user_name` LIKE '%".$searchText."%';";												
 												}
 												else
 												{
