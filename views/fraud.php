@@ -124,7 +124,7 @@
                         <div class="col-lg-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-child fa-fw"></i> Players
+                                    <h3 class="panel-title"><i class="fa fa-child fa-fw"></i>New Player Check</h3><small>Showing the latest 100 new players on the server</small>
                                 </div>
                                 <div class="panel-body">
                                     <div class="table-responsive">
