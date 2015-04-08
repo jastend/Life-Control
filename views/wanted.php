@@ -125,7 +125,7 @@
 												if (isset($_POST['searchText']))
 												{
 													$searchText = $_POST['searchText'];
-													$sql = "SELECT * FROM `wanted` WHERE `wantedBounty` LIKE '%".$searchText."%' ".$max." ;";											
+													$sql = "SELECT * FROM `wanted` WHERE `wantedBounty` LIKE '%".$searchText."%';";											
 												}
 												else
 												{

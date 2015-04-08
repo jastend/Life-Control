@@ -50,14 +50,14 @@
                     <li style="margin-top: 20px;">
                         <a href="notes.php"><i class="fa fa-fw fa-bell"></i> Admin Notes</a>
                     </li>
+                    <li>
+                        <a href="fraud.php"><i class="fa fa-fw fa-bullseye"></i> Fraud Detection</a>
+                    </li>
                     <?php if ($_SESSION['user_level'] >= 2) { ?>
                         <li>
                             <a href="messages.php"><i class="fa fa-fw fa-envelope-o"></i> Messages</a>
                         </li>
                     <?php }; ?>
-                    <li>
-                        <a href="newplayercheck.php"><i class="fa fa-fw fa-bullseye"></i> New Player Check</a>
-                    </li>
                     <?php if ($_SESSION['user_level'] >= 3) { ?>
                             <li>
                                 <a href="prices.php"><i class="fa fa-fw fa-money"></i> Stocklist</a>
