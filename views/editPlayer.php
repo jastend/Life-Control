@@ -247,7 +247,7 @@
                                             {
                                                 $playersID = $row["playerid"];
                                                 echo "<center>";
-                                                    echo "<h3>Name: ".$row["name"]."</h3>";
+                                                    echo "<h3>Name: ".$row["name"]."</h3> <a href='http://steamcommunity.com/profiles/".$row["playerid"]."' target='_blank'>Steam Profile</a>";
                                                     echo "<h4>Last update: ".$row["timeupdated"]."</h4>";
                                                     echo "<h4>Aliases: ".$row["aliases"]."</h4>";
                                                     echo "<h4>Database ID: ".$row["uid"]."</h4>";
