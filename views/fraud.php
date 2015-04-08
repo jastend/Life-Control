@@ -224,7 +224,7 @@
                                     <div class="col-lg-4" style="top:-12px;float:right;">
                                         <form style="float:right;" method='post' action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>#tabItems" name='searchPlayer'>
                                             <input id='searchText' type='text' name='searchText'></input>
-                                            <input class='btn btn-sm btn-primary'  type='submit'  name='edit' value='Search Text' style="margin-top: -3px;"></input>
+                                            <input class='btn btn-sm btn-primary'  type='submit'  name='edit' value='Search' style="margin-top: -3px;"></input>
                                         </form>
                                     </div>
                                 </div>
