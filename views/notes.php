@@ -126,7 +126,7 @@
                                             {
                                                 $searchText = $_POST['searchText'];
 
-                                                $sql = "SELECT * FROM `lc_notes` ORDER BY `time` DESC WHERE `note` LIKE '%".$searchText."%';";
+                                                $sql = "SELECT * FROM `lc_notes` WHERE `note` LIKE '%".$searchText."%' ORDER BY `time` DESC ;";
                                             }
                                             else
                                             {
