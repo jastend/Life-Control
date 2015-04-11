@@ -4,7 +4,7 @@ Life-Control is developed by Cammygames. This contains primarily the release and
 
 1. Download the latest files (for mostly-stable versions, please visit our [releases section](https://github.com/jastend/Life-Control/releases/tag/1.0))
 2. Unpack everything
-3. Add your database settings to the [config/db.php](https://github.com/jastend/Life-Control/blob/master/config/db.php)
+3. Add your database settings to the [config/db.php](https://gist.github.com/jastend/6ffa0322cea55b1c9808) and add it to your files
 3. Upload the files to your webserver
 4. Run this database query in your Altis Life database: https://gist.github.com/jastend/16eeec33ba470735a8da
    * Default username: Admin
