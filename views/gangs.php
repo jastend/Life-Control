@@ -146,7 +146,7 @@
 														echo "<td>".$row["bank"]."</td>";
 														echo "<td>".$row["maxmembers"]."</td>";
 														echo "<td>".$row["active"]."</td>";
-														echo "<td><a href='/editGang.php?gId=".$row["id"]."'><div class='btn btn-sm btn-primary'>Edit Gang</div></a></td>";
+														echo "<td><a href='editGang.php?gId=".$row["id"]."'><div class='btn btn-sm btn-primary'>Edit Gang</div></a></td>";
 													echo "</tr>";
 												};
 												echo "</tbody></table>";
