@@ -84,6 +84,7 @@
                                     <thead>
                                         <tr>
                                             <th>Admin</th>
+                                            <th>Player Name</th>
                                             <th>Player ID</th>
                                             <th>Time</th>
                                             <th>Note</th>
@@ -130,13 +131,14 @@
                                             }
                                             else
                                             {
-                                                $sql = "SELECT * FROM `lc_notes` ORDER BY `time` DESC ".$max.";";
+                                                $sql = "SELECT * FROM `lc_notes` LEFT JOIN `players` ON lc_notes.playerid=players.playerid ORDER BY `time` DESC ".$max.";";
                                             }
                                             $result_of_query = $db_connection->query($sql);
                                             while($row = mysqli_fetch_assoc($result_of_query)) 
                                             {
                                                 echo "<tr>";
                                                     echo "<td>".$row["admin"]."</td>";
+                                                    echo "<td>".$row["name"]."</td>";
                                                     echo "<td>".$row["playerid"]."</td>";
                                                     echo "<td>".$row["time"]."</td>";
                                                     echo "<td>".$row["note"]."</td>";
