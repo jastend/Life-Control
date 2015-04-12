@@ -109,6 +109,7 @@
                                                     <th>Cash</th>
                                                     <th>Bank</th>
                                                     <th>Alert</th>
+                                                    <th>Last update</th>
                                                     <th>Edit</th>
                                                 </tr>
                                             </thead>
@@ -180,6 +181,7 @@
                                                             if(strpos($row['civ_gear'],'optic_MRCO') !== false){echo 'MRCO Sight<br />';}
                                                             if(strpos($row['civ_gear'],'Laserdesignator') !== false){echo 'Laserdesignator<br />';}
                                                         "</td>";
+                                                        echo "<td>".$row["timeupdated"]."</td>";
                                                         echo "<td><a href='editPlayer.php?pId=".$playersID."'><div class='btn btn-sn btn-primary'>Edit Player</div></a></td>";
                                                     echo "</tr>";
 

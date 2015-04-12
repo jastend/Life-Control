@@ -91,6 +91,7 @@
                                             <th>Cop</th>
                                             <th>THW</th>
                                             <th>Admin</th>
+                                            <th>Last update</th>
                                             <th>Edit</th>
                                         </tr>
                                     </thead>
@@ -155,6 +156,7 @@
                                                     echo "<td>".$row["coplevel"]."</td>";
                                                     echo "<td>".$row["mediclevel"]."</td>";
                                                     echo "<td>".$row["adminlevel"]."</td>";
+                                                    echo "<td>".$row["timeupdated"]."</td>";
                                                     echo "<td><a href='editPlayer.php?pId=".$playersID."'><div class='btn btn-sm btn-primary'>Edit Player</div></a></td>";
                                                 echo "</tr>";
 
