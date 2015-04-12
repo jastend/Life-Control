@@ -2,9 +2,9 @@ Life-Control is developed by Cammygames. This contains primarily the release and
 
 ## Installation
 
-1. Download the latest files (for mostly-stable versions, please visit our [releases section](https://github.com/jastend/Life-Control/releases/tag/1.0))
+1. Download the latest files (for mostly-stable versions, please visit our [releases section](https://github.com/jastend/Life-Control/releases/latest)
 2. Unpack everything
-3. Add your database settings to the [config/db.php](https://gist.github.com/jastend/6ffa0322cea55b1c9808) and add it to your files
+3. Add your database settings to the [config/db.php](https://gist.github.com/jastend/e81ea58ebc04d0f38ea9) and add it to your files
 3. Upload the files to your webserver
 4. Run this database query in your Altis Life database: https://gist.github.com/jastend/16eeec33ba470735a8da
    * Default username: Admin
@@ -12,6 +12,15 @@ Life-Control is developed by Cammygames. This contains primarily the release and
 6. Create a hash of your first password via http://life.kbs-altis.de/hash/
 7. Go into the users table and change your username and password for your first account
 8. Gently congratulate yourself with a hot beverage of your choice and log in
+
+## Improvements
+
+Please note that this version of Life Control is developed to accompany the needs of KBS-Altis.de first. I am happy to help you with any questions regarding the customization, but please use [cammygames Life Control](https://github.com/cammygames/Life-Control) instead if you'd like a version which you can install and start using directly.
+
+* 3-Tier rank system
+* Admin notes
+* Fraud detection (New Player Check for first 100 players, Search for items based on class)
+
 
 ## Rank system
 
@@ -31,9 +40,9 @@ This version uses a modified rank system that includes 3 permission tiers. The f
 ### User
 
 1. Can see Players *- with the exception of house information -* but not edit them *- with the exception of some vehicles*
-2. Can't see vehicle list, but access vehicles that got destroyed or aren't in the garage anymore
+2. Can use quick fix buttons for vehicles
 3. Can't see houses
-4. Can access gangs but can't edit them
+4. Can see gangs but can't edit them
 
 ## Issues / Questions
 
