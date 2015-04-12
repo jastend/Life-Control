@@ -127,7 +127,7 @@
                                             {
                                                 $searchText = $_POST['searchText'];
 
-                                                $sql = "SELECT * FROM `lc_notes` WHERE `note` LIKE '%".$searchText."%' ORDER BY `time` DESC ;";
+                                                $sql = "SELECT * FROM `lc_notes` LEFT JOIN `players` ON lc_notes.playerid=players.playerid WHERE `note` LIKE '%".$searchText."%' ORDER BY `time` DESC ;";
                                             }
                                             else
                                             {
