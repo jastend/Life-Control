@@ -64,34 +64,6 @@
         }
         
     </style>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script>
-    
-        jQuery(document).ready(function() {
-            
-            $(window).load(function(){
-                if((location.hash === "#tabItems")) {
-                    var $targetA = $('.tabs ' + location.hash);
-                    $targetA.parent('li').addClass('active').siblings().removeClass('active');
-                    $targetA.fadeIn(400).siblings().hide();
-                }
-            });
-            
-            jQuery('.tab-links a').on('click', function(e)  {
-                var currentAttrValue = jQuery(this).attr('href');
-
-                // Show/Hide Tabs
-                jQuery('.tabs ' + currentAttrValue).fadeIn(400).siblings().hide();
-
-                // Change/remove current tab to active
-                jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
-
-                e.preventDefault();
-            });
-        });
-        
-    </script>
 
 </head>
 
@@ -394,10 +366,39 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+    
+        jQuery(document).ready(function() {
+
+            $(window).load(function(){
+                if((location.hash === "#tabItems")) {
+                    var $targetA = $('.tabs ' + location.hash);
+                    $targetA.parent('li').addClass('active').siblings().removeClass('active');
+                    $targetA.fadeIn(400).siblings().hide();
+                }
+            });
+            
+            jQuery('.tab-links a').on('click', function(e)  {
+                var currentAttrValue = jQuery(this).attr('href');
+
+                // Show/Hide Tabs
+                jQuery('.tabs ' + currentAttrValue).fadeIn(400).siblings().hide();
+
+                // Change/remove current tab to active
+                jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+                
+                e.preventDefault();
+                
+            });
+        });
+        
+    </script>
 
     <!-- Morris Charts JavaScript -->
     <script src="js/plugins/morris/raphael.min.js"></script>
