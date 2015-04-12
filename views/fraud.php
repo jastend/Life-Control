@@ -128,7 +128,6 @@
                                                     } else {
                                                         echo "<tr>";
                                                     }
-                                                        
                                                         echo "<td>".$row["name"]."</td>";
                                                         echo "<td>".$playersID."</td>";
                                                         echo "<td>".$row["cash"]."</td>";
@@ -376,25 +375,28 @@
 
     <!-- Custom JavaScript -->
     <script>
+    
+        jQuery(document).ready(function() {
 
-        $(document).ready(function() {
             $(window).load(function(){
-                var l_hash = +-64location.hash;    //onloadFake
-                if(((l_hash).indexOf('#tab')) == 0) {
-                    $('.tab-content ' + l_hash).fadeIn(400).siblings().hide();
-                    $('.tab-links a[href="'+l_hash+'"]').parent('li').addClass('active').siblings().removeClass('active');
+                if((location.hash === "#tabItems")) {
+                    var $targetA = $('.tabs ' + location.hash);
+                    $targetA.parent('li').addClass('active').siblings().removeClass('active');
+                    $targetA.fadeIn(400).siblings().hide();
                 }
             });
-
-            $('.tab-links a').click(function()  {
-                var $this = $(this),
-                    currentAttrValue = $this.attr('href');
+            
+            jQuery('.tab-links a').on('click', function(e)  {
+                var currentAttrValue = jQuery(this).attr('href');
 
                 // Show/Hide Tabs
-                $('.tab-content ' + currentAttrValue).fadeIn(400).siblings().hide();
+                jQuery('.tabs ' + currentAttrValue).fadeIn(400).siblings().hide();
+
                 // Change/remove current tab to active
-                $this.parent('li').addClass('active').siblings().removeClass('active');
-                return false;
+                jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+                
+                e.preventDefault();
+                
             });
         });
         
