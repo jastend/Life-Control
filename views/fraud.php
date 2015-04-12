@@ -72,8 +72,9 @@
             
             $(window).load(function(){
                 if((location.hash === "#tabItems")) {
-                    jQuery('.tabs ' + '#tabItems').fadeIn(400).siblings().hide();
-                    jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+                    var $targetA = $('.tabs ' + location.hash);
+                    $targetA.parent('li').addClass('active').siblings().removeClass('active');
+                    $targetA.fadeIn(400).siblings().hide();
                 }
             });
             
@@ -162,20 +163,13 @@
                                                             if(strpos($row['civ_licenses'],'[`license_civ_kautionsbro`,1]') !== false){echo '<b style="color: red;">Bail License</b><br />';}
                                                             if(strpos($row['civ_licenses'],'[`license_civ_explosive`,1]') !== false){echo '<b style="color: red;">Explosive License</b><br />';}
                                                             if(strpos($row['civ_licenses'],'[`license_civ_plastik`,1]') !== false){echo '<b style="color: red;">Plastic License</b><br />';}
-                                                            if(strpos($row['civ_licenses'],'[`license_civ_rebel`,1]') !== false){echo ' <b>Rebellenlizenz</b><br />';}
-                                                            if(strpos($row['civ_gear'],'srifle_EBR_F') !== false){echo 'Mk18 ABR 7.62 mm<br />';}
-                                                            if(strpos($row['civ_gear'],'srifle_GM6_F') !== false){echo 'GM6 Lynx 12.7 mm<br />';}
-                                                            if(strpos($row['civ_gear'],'srifle_LRR_F') !== false){echo 'M320 LRR .408<br />';}
-                                                            if(strpos($row['civ_gear'],'arifle_Katiba_F') !== false){echo 'Katiba 6.5 mm<br />';}
-                                                            if(strpos($row['civ_gear'],'arifle_Katiba_C_F') !== false){echo 'Katiba Carbine 6.5 mm<br />';}
-                                                            if(strpos($row['civ_gear'],'arifle_Katiba_GL_F') !== false){echo 'Katiba GL 6.5 mm<br />';}
-                                                            if(strpos($row['civ_gear'],'arifle_MXC_F') !== false){echo 'MXC 6.5 mm<br />';}
-                                                            if(strpos($row['civ_gear'],'arifle_MX_F') !== false){echo 'MX 6.5 mm<br />';}
-                                                            if(strpos($row['civ_gear'],'arifle_MX_GL_F') !== false){echo 'MX 3GL 6.5 mm<br />';}
-                                                            if(strpos($row['civ_gear'],'arifle_MX_SW_F') !== false){echo 'MX SW 6.5 mm<br />';}
-                                                            if(strpos($row['civ_gear'],'arifle_MXM_F') !== false){echo 'MXM 6.5 mm<br />';}
-                                                            if(strpos($row['civ_gear'],'LMG_Zafir_F') !== false){echo 'Zafir 7.62 mm<br />';}
-                                                            if(strpos($row['civ_gear'],'srifle_DMR_01_F') !== false){echo 'Rahim 7.62 mm<br />';}
+                                                            if(strpos($row['civ_licenses'],'[`license_civ_rebel`,1]') !== false){echo ' <b>Rebell License</b><br />';}
+                                                            if(strpos($row['civ_gear'],'arifle_Katiba') !== false){echo 'Katiba 6.5 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'arifle_Mk20') !== false){echo 'MK20 5.56 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'arifle_MX') !== false){echo 'MX 6.5 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'arifle_SDAR') !== false){echo 'SDAR 5.56 mm<br />';}
+                                                            if(strpos($row['civ_gear'],'arifle_TRG') !== false){echo 'TRG-20 5.56 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'hgun_PDW2000') !== false){echo 'PDW 9 mm Series<br />';}
                                                             if(strpos($row['civ_gear'],'launch_NLAW_F') !== false){echo 'PCML Rocket Launcher<br />';}
                                                             if(strpos($row['civ_gear'],'launch_RPG32_F') !== false){echo 'RPG-42 Alamut<br />';}
                                                             if(strpos($row['civ_gear'],'launch_B_Titan_F') !== false){echo 'Titan MPRL Launcher<br />';}
@@ -186,6 +180,21 @@
                                                             if(strpos($row['civ_gear'],'launch_I_Titan_short_F') !== false){echo 'Titan MPRL Compact<br />';}
                                                             if(strpos($row['civ_gear'],'launch_O_Titan_short_F') !== false){echo 'Titan MPRL Compact<br />';}
                                                             if(strpos($row['civ_gear'],'launch_Titan_short_F') !== false){echo 'Titan MPRL Compact<br />';}
+                                                            if(strpos($row['civ_gear'],'LMG_Mk200') !== false){echo 'Mk200 6.5 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'LMG_Zafir') !== false){echo 'Zafir 7.62 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'MMG_01') !== false){echo 'Navid 9.3 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'MMG_02') !== false){echo 'SPMG .338 Series<br />';}
+                                                            if(strpos($row['civ_gear'],'SMG_01') !== false){echo 'Vermin SMG .45 Series<br />';}
+                                                            if(strpos($row['civ_gear'],'SMG_02') !== false){echo 'Sting 9 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'srifle_DMR_01') !== false){echo 'Rahim 7.62 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'srifle_DMR_02') !== false){echo 'MAR-10 .338 Series<br />';}
+                                                            if(strpos($row['civ_gear'],'srifle_DMR_03') !== false){echo 'Mk-1 EMR 7.62 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'srifle_DMR_04') !== false){echo 'ASP-1 Kir 12.7 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'srifle_DMR_05') !== false){echo 'Cyrus 9.3 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'srifle_DMR_06') !== false){echo 'Mk14 7.62 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'srifle_EBR') !== false){echo 'Mk18 ABR 7.62 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'srifle_GM6') !== false){echo 'GM6 Lynx 12.7 mm Series<br />';}
+                                                            if(strpos($row['civ_gear'],'srifle_LRR') !== false){echo 'M320 LRR .408 Series<br />';}
                                                             if(strpos($row['civ_gear'],'optic_SOS') !== false){echo 'SOS Sight<br />';}
                                                             if(strpos($row['civ_gear'],'optic_DMS') !== false){echo 'DMS Sight<br />';}
                                                             if(strpos($row['civ_gear'],'optic_LRPS') !== false){echo 'LRPS Sight<br />';}
