@@ -163,7 +163,7 @@
                                                                 echo "<td>".$row["admin"]."</td>";
                                                                 echo "<td>".$row["time"]."</td>";
                                                                 echo "<td>".$row["note"]."</td>";
-                                                                echo "<td><a href='/editNote.php?nId=".$row["id"]."'><div class='btn btn-sm btn-primary'>Edit Note</div></a></td>";
+                                                                echo "<td><a href='editNote.php?nId=".$row["id"]."'><div class='btn btn-sm btn-primary'>Edit Note</div></a></td>";
                                                             echo "</tr>";
                                                         };
                                                     } 
@@ -351,7 +351,7 @@
                                                     $result_of_query = $db_connection->query($sql);
                                                     while($row = mysqli_fetch_assoc($result_of_query)) 
                                                     {
-                                                         echo "<center><h4>Gang: <a href='/editGang.php?gId=".$row["id"]."'>".$row["name"]."</a></h4></center>";                                                            
+                                                         echo "<center><h4>Gang: <a href='editGang.php?gId=".$row["id"]."'>".$row["name"]."</a></h4></center>";                                                            
                                                     };
                                 ?>
                                 <center>
@@ -496,7 +496,7 @@
                                                                     <td>
                                                                     <?php
                                                                         if ($_SESSION['user_level'] >= '2') {
-                                                                            echo "<a href='/editVeh.php?vId=".$vehID."'><div class='btn btn-sm btn-primary'>Edit Vehicle</div></a>";
+                                                                            echo "<a href='editVeh.php?vId=".$vehID."'><div class='btn btn-sm btn-primary'>Edit Vehicle</div></a>";
                                                                         };
                                                                         if ($row["alive"] != '1' || $row["active"] != '0') {
                                                                             echo "<input id='pId' type='hidden' name='pId' value='".$pId."'>";

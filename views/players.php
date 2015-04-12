@@ -155,7 +155,7 @@
                                                     echo "<td>".$row["coplevel"]."</td>";
                                                     echo "<td>".$row["mediclevel"]."</td>";
                                                     echo "<td>".$row["adminlevel"]."</td>";
-                                                    echo "<td><a href='/editPlayer.php?pId=".$playersID."'><div class='btn btn-sm btn-primary'>Edit Player</div></a></td>";
+                                                    echo "<td><a href='editPlayer.php?pId=".$playersID."'><div class='btn btn-sm btn-primary'>Edit Player</div></a></td>";
                                                 echo "</tr>";
 
                                             };

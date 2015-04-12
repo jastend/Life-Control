@@ -140,7 +140,7 @@
                                                     echo "<td>".$row["playerid"]."</td>";
                                                     echo "<td>".$row["time"]."</td>";
                                                     echo "<td>".$row["note"]."</td>";
-                                                    echo "<td><a href='/editPlayer.php?pId=".$row["playerid"]."'><div class='btn btn-sm btn-primary'>Edit Player</div></a></td>";
+                                                    echo "<td><a href='editPlayer.php?pId=".$row["playerid"]."'><div class='btn btn-sm btn-primary'>Edit Player</div></a></td>";
                                                 echo "</tr>";
 
                                             };

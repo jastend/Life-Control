@@ -265,7 +265,7 @@
                                                                     echo "<tr>";
                                                                         echo "<td>".$row["name"]."</td>";
                                                                         echo "<td>".$playersID."</td>";
-                                                                        echo "<td><a href='/editPlayer.php?pId=".$playersID."'><div class='btn btn-sm btn-primary'>Edit Player</div></a></td>";
+                                                                        echo "<td><a href='editPlayer.php?pId=".$playersID."'><div class='btn btn-sm btn-primary'>Edit Player</div></a></td>";
                                                                     echo "</tr>";
                                                                 };
                                                             }
@@ -306,8 +306,8 @@
                                                                     $hId = $row["id"];
                                                                     echo "<tr>";
                                                                         echo "<td>".$row["pid"]."</td>";
-                                                                        echo "<td><a href='/editPlayer.php?pId=".$playersID."'><div class='btn btn-sm btn-primary'>Edit Player</div></a></td>";
-                                                                        echo "<td><a href='/editHouse.php?hId=".$hId."'><div class='btn btn-sm btn-primary'>Edit House</div></a></td>";
+                                                                        echo "<td><a href='editPlayer.php?pId=".$playersID."'><div class='btn btn-sm btn-primary'>Edit Player</div></a></td>";
+                                                                        echo "<td><a href='editHouse.php?hId=".$hId."'><div class='btn btn-sm btn-primary'>Edit House</div></a></td>";
                                                                     echo "</tr>";
                                                                 };
                                                             }
@@ -365,7 +365,7 @@
                                                                     if(strpos($row['civ_licenses'],'[`license_civ_explosive`,1]') !== false){echo 'Explosive License<br />';}
                                                                     if(strpos($row['civ_licenses'],'[`license_civ_plastik`,1]') !== false){echo 'Plastic License<br />';}
                                                                 echo "</td>";
-                                                                echo "<td><a href='/editPlayer.php?pId=".$playersID."'><div class='btn btn-sm btn-primary'>Edit Player</div></a></td>";
+                                                                echo "<td><a href='editPlayer.php?pId=".$playersID."'><div class='btn btn-sm btn-primary'>Edit Player</div></a></td>";
                                                             echo "</tr>";
                                                         };
                                                     } 
