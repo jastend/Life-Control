@@ -53,6 +53,11 @@
                     <li>
                         <a href="fraud.php"><i class="fa fa-fw fa-bullseye"></i> Fraud Detection</a>
                     </li>
+                    <?php if ($_SESSION['user_level'] >= 3) { ?>
+                        <li>
+                            <a href="messages.php"><i class="fa fa-fw fa-minus"></i> GUID</a>
+                        </li>
+                    <?php }; ?>
                     <?php if ($_SESSION['user_level'] >= 2) { ?>
                         <li>
                             <a href="messages.php"><i class="fa fa-fw fa-envelope-o"></i> Messages</a>
