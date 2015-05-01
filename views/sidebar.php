@@ -44,6 +44,10 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
+                    <form style="" method='post' action="players.php" name='searchPlayer'>
+                        <li style="width: 225px; line-height: 20px; padding: 10px 15px;"><input id='searchText' type='text' name='searchText'></li>
+                        <li style="width: 225px; line-height: 20px; padding: 0 15px 10px;"><input style='margin-right: 10px;' class='btn btn-xs btn-primary'  type='submit'  name='edit' value='Name'><input class='btn btn-xs btn-primary'  type='submit'  name='pid' value='PID'></li>
+                    </form>
                     <li>
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>

@@ -142,7 +142,7 @@
                                             }
                                             else
                                             {
-                                                $sql = "SELECT * FROM `players` ".$max." ;";
+                                                $sql = "SELECT name, playerid, cash, bankacc, coplevel, mediclevel, adminlevel, timeupdated FROM `players` ".$max." ;";
                                             }
                                             $result_of_query = $db_connection->query($sql);
                                             while($row = mysqli_fetch_assoc($result_of_query)) 
