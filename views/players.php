@@ -159,7 +159,6 @@
                                                     echo "<td>".$row["timeupdated"]."</td>";
                                                     echo "<td><a href='editPlayer.php?pId=".$playersID."'><div class='btn btn-sm btn-primary'>Edit Player</div></a></td>";
                                                 echo "</tr>";
-
                                             };
                                             echo "</tbody></table>";
                                             echo "<table><thead>";
@@ -178,7 +177,7 @@
                                                 echo "</form></th>";
                                             } 
                                             //This does the same as above, only checking if we are on the last page, and then generating the Next and Last links
-                                            if ($pagenum) {} 
+                                            if ($pagenum == $last) {} 
                                             else 
                                             {
                                                 $next = $pagenum+1;
@@ -209,11 +208,11 @@
         </div>
         <!-- /.row -->
 
-            </div>
-            <!-- /.container-fluid -->
+    </div>
+    <!-- /.container-fluid -->
 
-        </div>
-        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
