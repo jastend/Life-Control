@@ -85,12 +85,12 @@
                                                 </thead>
                                                 <tbody>
                                                 <?php
-                                                    if (!$db_connection->connect_errno) 
+                                                    if (!$db_connection->connect_errno)
                                                     {
 
-                                                        if (!(isset($_POST['pagenum']))) 
-                                                        { 
-                                                            $pagenum = 1; 
+                                                        if (!(isset($_POST['pagenum'])))
+                                                        {
+                                                            $pagenum = 1;
                                                         }
                                                         else
                                                         {
@@ -98,10 +98,10 @@
                                                         }
 
                                                         $sql = "SELECT * FROM `stocksys` WHERE `ID`='1';";
-                                                        
+
                                                         $result_of_query = $db_connection->query($sql);
-                                                        
-                                                        while($row = mysqli_fetch_assoc($result_of_query)) 
+
+                                                        while($row = mysqli_fetch_assoc($result_of_query))
                                                         {
                                                             echo "<tr><td>oilp</td><td>".$row["oilp"]."</td></tr>";
                                                                 echo "<tr><td>diamondc</td><td>".$row["diamondc"]."</td></tr>";
@@ -124,21 +124,21 @@
                                                                 echo "<tr><td>cocainep</td><td>".$row["cocainep"]."</td></tr>";
                                                                 echo "<tr><td>froglsd</td><td>".$row["froglsd"]."</td></tr>";
                                                                 echo "<tr><td>marijuana</td><td>".$row["marijuana"]."</td></tr>";
-                                                                echo "<tr><td>turtle</td><td>".$row["turtle"]."</td></tr>";
+                                                                echo "<tr><td>krabben</td><td>".$row["krabben"]."</td></tr>";
                                                                 echo "<tr><td>uranp2</td><td>".$row["uranp2"]."</td></tr>";
                                                         };
                                                         echo "</tbody></table>";
                                                         echo "<table><thead>";
                                                         echo "<br>";
-                                                        
-                                                    } 
-                                                    else 
+
+                                                    }
+                                                    else
                                                     {
                                                         $this->errors[] = "Database connection problem.";
                                                     }
-                                                ?>  
+                                                ?>
                                         </div>
-                                    
+
                             </div>
                         </div>
                     </div>

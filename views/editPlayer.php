@@ -3,20 +3,20 @@
 	$db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     $page_rows_notes = '5';
     $page_rows_vehicles = '10';
-    
+
 	if (isset($_GET["playerId"]))
 	{
-		$pId = $_GET["playerId"];	
+		$pId = $_GET["playerId"];
         $playersID = $_GET["playerId"];
 	}
     else if (isset($_GET["pId"]))
 	{
-		$pId = $_GET["pId"];	
+		$pId = $_GET["pId"];
         $playersID = $_GET["pId"];
 	}
     else if (isset($_POST["playerId"]))
 	{
-		$pId = $_POST["playerId"];	
+		$pId = $_POST["playerId"];
         $playersID = $_POST["playerId"];
 	}
 	else
@@ -28,9 +28,9 @@
 	if (!$db_connection->set_charset("utf8")) {
 		$db_connection->errors[] = $db_connection->error;
 	}
-	
+
 	$pGID = "";
-		
+
 	$temp = '';
 
 	for ($i = 0; $i < 8; $i++) {
@@ -100,9 +100,9 @@
                     </div>
                 </div>
                 <!-- /.row -->
-                
+
                 <div class='col-lg-12'>
-                    
+
                     <div class='panel panel-default'>
                         <div class='panel-heading'>
                             <h3 class='panel-title'><i class='fa fa-bell fa-fw'></i> Notes</h3>
@@ -126,11 +126,11 @@
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                if (!$db_connection->connect_errno) 
+                                                if (!$db_connection->connect_errno)
                                                 {
-                                                    if (!(isset($_POST['pagenum']))) 
-                                                        { 
-                                                            $pagenum = 1; 
+                                                    if (!(isset($_POST['pagenum'])))
+                                                        {
+                                                            $pagenum = 1;
                                                         }
                                                         else
                                                         {
@@ -140,24 +140,24 @@
                                                         $sql = "SELECT * FROM `lc_notes`;";
 
                                                         $result_of_query = $db_connection->query($sql);
-                                                        $rows = mysqli_num_rows($result_of_query); 
+                                                        $rows = mysqli_num_rows($result_of_query);
 
-                                                        $last = ceil($rows/$page_rows_notes); 
+                                                        $last = ceil($rows/$page_rows_notes);
 
-                                                        if ($pagenum < 1) 
-                                                        { 
-                                                            $pagenum = 1; 
-                                                        } 
-                                                        elseif ($pagenum > $last) 
-                                                        { 
-                                                            $pagenum = $last; 
+                                                        if ($pagenum < 1)
+                                                        {
+                                                            $pagenum = 1;
+                                                        }
+                                                        elseif ($pagenum > $last)
+                                                        {
+                                                            $pagenum = $last;
                                                         }
 
                                                         $max = 'limit ' .($pagenum - 1) * $page_rows_notes .',' .$page_rows_notes;
 
                                                         $sql = "SELECT * FROM `lc_notes` WHERE `playerid` = '".$pId."' ORDER BY `time` DESC ".$max." ;";
                                                         $result_of_query = $db_connection->query($sql);
-                                                        while($row = mysqli_fetch_assoc($result_of_query)) 
+                                                        while($row = mysqli_fetch_assoc($result_of_query))
                                                         {
                                                             echo "<tr>";
                                                                 echo "<td>".$row["admin"]."</td>";
@@ -166,8 +166,8 @@
                                                                 echo "<td><a href='editNote.php?nId=".$row["id"]."'><div class='btn btn-sm btn-primary'>Edit Note</div></a></td>";
                                                             echo "</tr>";
                                                         };
-                                                    } 
-                                                    else 
+                                                    }
+                                                    else
                                                     {
                                                         $this->errors[] = "Database connection problem.";
                                                     }
@@ -179,8 +179,8 @@
 
                                                         echo "<table><thead>";
                                                         echo "<br>";
-                                                        if ($pagenum == 1){} 
-                                                                else 
+                                                        if ($pagenum == 1){}
+                                                                else
                                                                 {
                                                                     echo "<th><form method='post' action='".$_SERVER['PHP_SELF']."?pId=".$pId."' name='pagenum'>";
                                                                     echo "<input id='pagenum' type='hidden' name='pagenum' value='1'>";
@@ -191,10 +191,10 @@
                                                                     echo "<input id='pagenum' type='hidden' name='pagenum' value='".$previous."'>";
                                                                     echo "<input type='submit' value=' <-Previous  '>";
                                                                     echo "</form></th>";
-                                                                } 
+                                                                }
                                                                 //This does the same as above, only checking if we are on the last page, and then generating the Next and Last links
-                                                                if ($pagenum == $last) {} 
-                                                                else 
+                                                                if ($pagenum == $last) {}
+                                                                else
                                                                 {
                                                                     $next = $pagenum+1;
                                                                     echo "<th><form method='post' action='".$_SERVER['PHP_SELF']."?pId=".$pId."' name='pagenum'>";
@@ -210,9 +210,9 @@
                                                         echo "</thead></table>";
 
                                                     };
-                                                    ?>                    
+                                                    ?>
                                                     </tbody>
-                                                </table>                
+                                                </table>
                                             </div>
                                         <?php }; ?>
                                         <form method="post" action="editNote.php" name="editform">
@@ -226,9 +226,9 @@
                                     </div>
                                 </div>
 							</div>
-                    
+
                 </div>
-                
+
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -237,13 +237,13 @@
                         <div class="panel-body">
                             <form method="post" action="editPlayer-actionProfile.php" name="editform">
                                 <?php
-                                    if (!$db_connection->connect_errno) 
+                                    if (!$db_connection->connect_errno)
                                     {
                                         $sql = 'SELECT * FROM `players` WHERE `playerid` ="'.$pId.'";';
                                         $result_of_query = $db_connection->query($sql);
                                         if ($result_of_query->num_rows > 0)
                                         {
-                                            while($row = mysqli_fetch_assoc($result_of_query)) 
+                                            while($row = mysqli_fetch_assoc($result_of_query))
                                             {
                                                 $playersID = $row["playerid"];
                                                 echo "<center>";
@@ -252,7 +252,7 @@
                                                     echo "<h4>Aliases: ".$row["aliases"]."</h4>";
                                                     echo "<h4>Database ID: ".$row["uid"]."</h4>";
                                                     echo "<h4>Player ID: ".$playersID."</h4>";
-                                                    echo "<h4>GUID: ".$pGID."</h4>";                        
+                                                    echo "<h4>GUID: ".$pGID."</h4>";
                                                     echo "<h4>Cash:    <input id='player_cash' name='player_cash' type='text' value='".$row["cash"]."'></td><br/>";
                                                     echo "<h4>Bank:    <input id='player_bank' name='player_bank' type='text' value='".$row["bankacc"]."'></td><br/>";
                                                     if ($_SESSION['user_level'] >= 2) {
@@ -265,10 +265,10 @@
                                                     echo "<select id='player_coplvl' name='player_coplvl'>";
                                                         echo '<option value="0"';
                                                             if($row['coplevel']==0){echo ' selected';}
-                                                        echo '>0</option>';	
+                                                        echo '>0</option>';
                                                         echo '<option value="1"';
                                                             if($row['coplevel']==1){echo ' selected';}
-                                                        echo '>1</option>';	
+                                                        echo '>1</option>';
                                                         echo '<option value="2"';
                                                             if($row['coplevel']==2){echo ' selected';}
                                                         echo '>2</option>';
@@ -298,10 +298,10 @@
                                                     echo "<select id='player_medlvl' name='player_medlvl'>";
                                                         echo '<option value="0"';
                                                             if($row['mediclevel']==0){echo ' selected';}
-                                                        echo '>0</option>';	
+                                                        echo '>0</option>';
                                                         echo '<option value="1"';
                                                             if($row['mediclevel']==1){echo ' selected';}
-                                                        echo '>1</option>';	
+                                                        echo '>1</option>';
                                                         echo '<option value="2"';
                                                             if($row['mediclevel']==2){echo ' selected';}
                                                         echo '>2</option>';
@@ -311,10 +311,10 @@
                                                         if($_SESSION['user_level'] >= '3') {
                                                             echo '<option value="0"';
                                                                 if($row['adminlevel']==0){echo ' selected';}
-                                                            echo '>0</option>';	
+                                                            echo '>0</option>';
                                                             echo '<option value="1"';
                                                                 if($row['adminlevel']==1){echo ' selected';}
-                                                            echo '>1</option>';	
+                                                            echo '>1</option>';
                                                             echo '<option value="2"';
                                                                 if($row['adminlevel']==2){echo ' selected';}
                                                             echo '>2</option>';
@@ -330,10 +330,10 @@
                                                         if($_SESSION['user_level'] >= '3') {
                                                             echo '<option value="0"';
                                                                 if($row['donatorlvl']==0){echo ' selected';}
-                                                            echo '>0</option>';	
+                                                            echo '>0</option>';
                                                             echo '<option value="1"';
                                                                 if($row['donatorlvl']==1){echo ' selected';}
-                                                            echo '>1</option>';	
+                                                            echo '>1</option>';
                                                             echo '<option value="2"';
                                                                 if($row['donatorlvl']==2){echo ' selected';}
                                                             echo '>2</option>';
@@ -349,16 +349,16 @@
                                 <?php
                                                 $sql = 'SELECT * FROM `gangs` where `members` LIKE "%'.$pId.'%"';
                                                     $result_of_query = $db_connection->query($sql);
-                                                    while($row = mysqli_fetch_assoc($result_of_query)) 
+                                                    while($row = mysqli_fetch_assoc($result_of_query))
                                                     {
-                                                         echo "<center><h4>Gang: <a href='editGang.php?gId=".$row["id"]."'>".$row["name"]."</a></h4></center>";                                                            
+                                                         echo "<center><h4>Gang: <a href='editGang.php?gId=".$row["id"]."'>".$row["name"]."</a></h4></center>";
                                                     };
                                 ?>
                                 <center>
                                     <?php
                                         if($_SESSION['user_level'] >= '2')
                                         {
-                                            echo "<input id='playerId' type='hidden' name='playerId' value='".$pId."'>";   
+                                            echo "<input id='playerId' type='hidden' name='playerId' value='".$pId."'>";
                                             echo "<input class='btn btn-sm btn-primary'  type='submit'  name='edit' value='Update Profile'>";
                                             echo "<br/><br/><input class='btn btn-sm btn-danger'  type='submit'  name='moneyhack' value='Flag as Money Hacker'>";
                                         };
@@ -366,7 +366,7 @@
                                     <br/>
                                 </center>
                             </form>
-                        </div>		
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-8" style="float:right">
@@ -389,11 +389,11 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                            if (!$db_connection->connect_errno) 
+                                            if (!$db_connection->connect_errno)
                                             {
-                                                if (!(isset($_POST['pagenum']))) 
-                                                    { 
-                                                        $pagenum = 1; 
+                                                if (!(isset($_POST['pagenum'])))
+                                                    {
+                                                        $pagenum = 1;
                                                     }
                                                     else
                                                     {
@@ -403,24 +403,24 @@
                                                     $sql = "SELECT * FROM `vehicles`;";
 
                                                     $result_of_query = $db_connection->query($sql);
-                                                    $rows = mysqli_num_rows($result_of_query); 
+                                                    $rows = mysqli_num_rows($result_of_query);
 
-                                                    $last = ceil($rows/$page_rows_vehicles); 
+                                                    $last = ceil($rows/$page_rows_vehicles);
 
-                                                    if ($pagenum < 1) 
-                                                    { 
-                                                        $pagenum = 1; 
-                                                    } 
-                                                    elseif ($pagenum > $last) 
-                                                    { 
-                                                        $pagenum = $last; 
+                                                    if ($pagenum < 1)
+                                                    {
+                                                        $pagenum = 1;
+                                                    }
+                                                    elseif ($pagenum > $last)
+                                                    {
+                                                        $pagenum = $last;
                                                     }
 
                                                     $max = 'limit ' .($pagenum - 1) * $page_rows_vehicles .',' .$page_rows_vehicles;
-                                                
+
                                                     $sql = "SELECT * FROM `vehicles` WHERE `pid` = '".$pId."' ORDER BY `active` DESC , `classname` ASC ".$max." ;";
                                                     $result_of_query = $db_connection->query($sql);
-                                                    while($row = mysqli_fetch_assoc($result_of_query)) 
+                                                    while($row = mysqli_fetch_assoc($result_of_query))
                                                     {
                                                         $vehID = $row["id"];
                                                         echo "<tr>";
@@ -500,7 +500,7 @@
                                                                         };
                                                                         if ($row["alive"] != '1' || $row["active"] != '0') {
                                                                             echo "<input id='pId' type='hidden' name='pId' value='".$pId."'>";
-                                                                            echo "<input id='vehID' type='hidden' name='vehID' value='".$vehID."'>"; 
+                                                                            echo "<input id='vehID' type='hidden' name='vehID' value='".$vehID."'>";
                                                                             echo " <input class='btn btn-sm btn-warning'  type='submit'  name='addNote' value='Fix & Garage'>";
                                                                         } else {
                                                                             echo "</td>";
@@ -510,21 +510,21 @@
                                                             <?php
                                                         echo "</tr>";
                                                     };
-                                                } 
-                                                else 
+                                                }
+                                                else
                                                 {
                                                     $this->errors[] = "Database connection problem.";
                                                 }
                                                 echo "</tbody></table>";
-                                                
+
                                                 $sql = "SELECT * FROM `vehicles` WHERE `pid` = '".$pId."';";
                                                 $result_of_query = $db_connection->query($sql);
                                                 if ($result_of_query->num_rows > $page_rows_vehicles) {
-                                                
+
                                                     echo "<table><thead>";
                                                     echo "<br>";
-                                                    if ($pagenum == 1){} 
-                                                            else 
+                                                    if ($pagenum == 1){}
+                                                            else
                                                             {
                                                                 echo "<th><form method='post' action='".$_SERVER['PHP_SELF']."?pId=".$playersID."' name='pagenum'>";
                                                                 echo "<input id='pagenum' type='hidden' name='pagenum' value='1'>";
@@ -535,10 +535,10 @@
                                                                 echo "<input id='pagenum' type='hidden' name='pagenum' value='".$previous."'>";
                                                                 echo "<input type='submit' value=' <-Previous  '>";
                                                                 echo "</form></th>";
-                                                            } 
+                                                            }
                                                             //This does the same as above, only checking if we are on the last page, and then generating the Next and Last links
-                                                            if ($pagenum == $last) {} 
-                                                            else 
+                                                            if ($pagenum == $last) {}
+                                                            else
                                                             {
                                                                 $next = $pagenum+1;
                                                                 echo "<th><form method='post' action='".$_SERVER['PHP_SELF']."?pId=".$playersID."' name='pagenum'>";
@@ -552,11 +552,11 @@
                                                                 echo "</form></th>";
                                                             }
                                                     echo "</thead></table>";
-                                                    
+
                                                 };
                                         ?>
-                                    
-                                
+
+
                             </div>
                         </div>
                     </div>
@@ -580,11 +580,11 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                                if (!$db_connection->connect_errno) 
+                                                if (!$db_connection->connect_errno)
                                                 {
                                                     $sql = "SELECT `pos`,`id` FROM `houses` WHERE `pid` = '".$pId."' ORDER BY `id` DESC LIMIT 10";
                                                     $result_of_query = $db_connection->query($sql);
-                                                    while($row = mysqli_fetch_assoc($result_of_query)) 
+                                                    while($row = mysqli_fetch_assoc($result_of_query))
                                                     {
 
                                                         $temp = '';
@@ -608,8 +608,8 @@
                                                             echo "</form></td>";
                                                         echo "</tr>";
                                                     };
-                                                } 
-                                                else 
+                                                }
+                                                else
                                                 {
                                                     $this->errors[] = "Database connection problem.";
                                                 }
@@ -625,11 +625,11 @@
                     <?php
                     $sql = 'SELECT * FROM `players` WHERE `playerid` ="'.$pId.'";';
                     $result_of_query = $db_connection->query($sql);
-                    while($row = mysqli_fetch_assoc($result_of_query)) 
-                    {    
+                    while($row = mysqli_fetch_assoc($result_of_query))
+                    {
                     ?>
 					<div class='col-lg-12'>
-                        
+
 						<div class='panel panel-default'>
 							<div class='panel-heading'>
 								<h3 class='panel-title'><i class='fa fa-child fa-fw'></i> Civilian</h3>
@@ -647,7 +647,7 @@
 								</div>
 							</div>
 						</div>
-                        
+
                         <div class='panel panel-default'>
 							<div class='panel-heading'>
 								<h3 class='panel-title'><i class='fa fa-taxi fa-fw'></i> Police</h3>
@@ -683,7 +683,7 @@
 								</div>
 							</div>
 						</div>
-                        
+
 					</div>
                     <?php }; ?>
                     <div class='col-lg-12'>
@@ -692,11 +692,11 @@
                             <h3 class='panel-title'><i class='fa fa-cubes fa-fw'></i> Skills</h3>
                         </div>
                         <?php
-                            if (!$db_connection->connect_errno) 
+                            if (!$db_connection->connect_errno)
                             {
                                 $sql = "SELECT * FROM `skillsys` WHERE `playerid` = '".$pId."' ;";
                                 $result_of_query = $db_connection->query($sql);
-                                while($row = mysqli_fetch_assoc($result_of_query)) 
+                                while($row = mysqli_fetch_assoc($result_of_query))
                                 { ?>
                                     <div class="panel-body">
                                         <div class="col-lg-4" style="float:left;">
@@ -722,6 +722,9 @@
                                                                 <?php echo "<tr><td>Frog</td><td><input id='skills_frog' name='skills_frog' value='".$row["frog"]."'></textarea></td></tr>"; ?>
                                                                 <?php echo "<tr><td>Oil</td><td><input id='skills_oilu' name='skills_oilu' value='".$row["oilu"]."'></textarea></td></tr>"; ?>
                                                                 <?php echo "<tr><td>Uran</td><td><input id='skills_uranu' name='skills_uranu' value='".$row["uranu"]."'></textarea></td></tr>"; ?>
+																																<?php echo "<tr><td>Fisch</td><td><input id='skills_fisch' name='skills_fisch' value='".$row["fisch"]."'></textarea></td></tr>"; ?>
+																																<?php echo "<tr><td>Krabben</td><td><input id='skills_krabben' name='skills_krabben' value='".$row["krabben"]."'></textarea></td></tr>"; ?>
+																																<?php echo "<tr><td>Reperatur</td><td><input id='skills_repair' name='skills_repair' value='".$row["repair"]."'></textarea></td></tr>"; ?>
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -749,6 +752,7 @@
                                                                 <?php echo "<tr><td>Silver</td><td><input id='skills_silver' name='skills_silver' value='".$row["silver"]."'></textarea></td></tr>"; ?>
                                                                 <?php echo "<tr><td>Gold</td><td><input id='skills_gold' name='skills_gold' value='".$row["gold"]."'></textarea></td></tr>"; ?>
                                                                 <?php echo "<tr><td>Diamond</td><td><input id='skills_diamond' name='skills_diamond' value='".$row["diamond"]."'></textarea></td></tr>"; ?>
+																																<?php echo "<tr><td>Tiefbau</td><td><input id='skills_tiefbau' name='skills_tiefbau' value='".$row["tiefbau"]."'></textarea></td></tr>"; ?>
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -783,21 +787,21 @@
                                     </div>
                                 <?php
                                 };
-                            } 
-                            else 
+                            }
+                            else
                             {
                                 $this->errors[] = "Database connection problem.";
                             }
                         ?>
                         </div>
                     </div>
-					<div class="col-md-4"></div>					
+					<div class="col-md-4"></div>
 					<div class="col-md-4">
                         <center>
                             <?php
                                 if($_SESSION['user_level'] >= '2')
                                 {
-                                    echo "<input id='playerId' type='hidden' name='playerId' value='".$pId."'>";   
+                                    echo "<input id='playerId' type='hidden' name='playerId' value='".$pId."'>";
                                     echo "<input class='btn btn-lg btn-primary'  type='submit'  name='edit' value='Submit Changes'>";
                                 } else {
                                     echo "Your permission level is insufficient to submit these changes.";
@@ -807,7 +811,7 @@
                         </center>
 					</div>
                     <div class="col-md-12" style="margin-bottom: 20px;"></div>
-                    <div class="col-md-12">    
+                    <div class="col-md-12">
                         <div class='panel panel-default'>
                         <div class='panel-heading'>
                             <h3 class='panel-title'><i class='fa fa-envelope-o fa-fw'></i> Messages</h3>
@@ -827,7 +831,7 @@
                                         <?php
                                         $sql = 'SELECT * FROM `messages` WHERE `fromID` = "'.$pId.'" OR `toID` = "'.$pId.'" ORDER BY `time` DESC';
                                         $result_of_query = $db_connection->query($sql);
-                                        while($row = mysqli_fetch_assoc($result_of_query)) 
+                                        while($row = mysqli_fetch_assoc($result_of_query))
                                         {
                                             echo "<tr>";
                                             echo "<td>".$row["fromName"]."</td>";
@@ -846,19 +850,19 @@
 									<?php
 												};
 											}
-											else 
+											else
 											{
 												echo "<center><h1 style='color:red'>ERROR NO RESULTS</h1></center>";
 											}
-										
-										} 
-										else 
+
+										}
+										else
 										{
 											$this->errors[] = "Database connection problem.";
 										}
-									?>  
+									?>
 								</form>
-                
+
             </div>
             <!-- /.container-fluid -->
         </div>
